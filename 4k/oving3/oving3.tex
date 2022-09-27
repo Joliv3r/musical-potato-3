@@ -1,0 +1,291 @@
+\documentclass{report}
+
+\usepackage{amsfonts, amsmath, amssymb, amsthm}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{comment}
+
+\newcommand{\M}[2]{\mathbb{#1}^{#2}}
+\newcommand{\twovector}[2]{\left[ \begin{array}{c} #1 \\ #2 \\ \end{array} \right]}
+\newcommand{\threevector}[3]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ \end{array} \right]}
+\newcommand{\fourvector}[4]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ #4 \\ \end{array} \right]}
+\newcommand{\fivevector}[5]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ #4 \\ #5 \\ \end{array} \right]}
+\newcommand{\sixvector}[6]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ #4 \\ #5 \\ #6 \\ \end{array} \right]}
+\newcommand{\sevenvector}[7]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ #4 \\ #5 \\ #6 \\ #7 \\ \end{array} \right]}
+\newcommand{\eightvector}[8]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ #4 \\ #5 \\ #6 \\ #7 \\ #8 \\ \end{array} \right]}
+\newcommand{\ninevector}[9]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ #4 \\ #5 \\ #6 \\ #7 \\ #8 \\ #9 \\ \end{array} \right]}
+\newcommand{\nbrack}[1]{\left( #1 \right)}
+\newcommand{\bbrack}[1]{\left[ #1 \right]}
+\newcommand{\cbrack}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\abrack}[1]{\left< #1 \right>}
+\newcommand{\linebrack}[1]{\left| #1 \right|}
+\newcommand{\twomatrix}[4]{\bbrack{
+    \begin{array}{cc}
+      #1 & #2 \\
+      #3 & #4 \\
+    \end{array}
+  }
+}
+\newcommand{\threematrix}[9]{\bbrack{
+    \begin{array}{ccc}
+      #1 & #2 & #3 \\
+      #4 & #5 & #6 \\
+      #7 & #8 & #9 \\
+    \end{array}
+  }
+}
+\newcommand{\Lplc}[1]{\mathscr{L}\bbrack{ #1 } (s)}
+\newcommand{\iLplc}[1]{\mathscr{L}^{-1}\bbrack{ #1 } (t)}
+\newcommand{\til}[1]{\overset{~}{#1}}
+
+\title{Innlevering 3}
+\author{Jacob Oliver Bruun}
+\date{\today}
+
+\makeatletter
+\let\inserttitle\@title
+\let\insertauthor\@author
+\makeatother
+
+\pagestyle{fancy}
+\chead{\insertauthor}
+\lhead{\inserttitle}
+\rhead{\today}
+
+\parindent 0ex
+
+\begin{document}
+\section*{11.1.2}
+Vet at fundamentalperioden for $\cos x$ er $2\pi$ og har dermed at fundamentalperioden til $\cos nx$ må være $p_{f} = 2\pi /n$ og har samme argumentet for $\sin nx$ og kan dermed konkludere med følgende
+\begin{equation}
+  \label{eq:1}
+  \begin{split}
+    \cos nx, \sin nx &\Rightarrow p_{f} = \frac{2\pi}{n} \\
+    \cos \frac{2\pi}{k} x, \sin \frac{2\pi}{k} x &\Rightarrow p_{f} = k \\
+    \cos \frac{2\pi n}{k} x, \sin \frac{2\pi n}{k} x &\Rightarrow p_{f} = \frac{k}{n} \\
+  \end{split}
+\end{equation}
+
+
+\section*{11.1.15}
+Ser på $f(x) = x^{2}$ for $0 < x < 2\pi$ med $f(x) = f(x + 2\pi)$ finner da
+\begin{equation}
+  \label{eq:2}
+  \begin{split}
+    a_{n} &= \frac{1}{\pi} \int_{0}^{2\pi} x^{2} \cos\nbrack{nx} dx \\
+          &= \frac{1}{\pi} \bbrack{ x^{2} \frac{\sin nx}{n} }_{0}^{2\pi} - \frac{2}{n\pi} \int_{0}^{2\pi} x \sin nx dx \\
+          &= \frac{2}{n^{2}\pi} x\cos nx \Big| _{0}^{2\pi} - \frac{2}{n^{2}\pi} \int_{0}^{2\pi} \cos nx dx \\
+          &= \frac{2}{n^{2}} \cos 2n\pi + \frac{2}{n^{2}} - \frac{2}{n^{3}\pi} \nbrack{ \sin 2n\pi  - \sin 0 } \\
+    &= \frac{4}{n^{2}}
+  \end{split}
+\end{equation}
+finner også
+\begin{equation}
+  \label{eq:3}
+  a_{0} = \frac{1}{2\pi} \int_{0}^{2\pi} x^{2} dx = \frac{1}{2\pi} \cdot \frac{8\pi^{3}}{3} = \frac{4\pi^{2}}{3}
+\end{equation}
+og til slutt
+\begin{equation}
+  \label{eq:4}
+  \begin{split}
+    b_{n} &= \frac{1}{\pi} \int_{0}^{2\pi} x^{2} \sin nx dx \\
+          &= \frac{1}{\pi} \bbrack{ -x^{2} \frac{\cos nx}{n} \Big| _{0}^{2\pi} + \frac{2}{n} \int_{0}^{2\pi} x \cos nx dx } \\
+          &= \frac{1}{\pi} \bbrack{ -\frac{4\pi^{2}}{n} + \frac{2}{n^{2}} x\sin nx \Big|_{0}^{2\pi} - \frac{2}{n^{2}} \int_{0}^{2\pi} \sin nx dx  } \\
+          &= \frac{1}{\pi} \bbrack{ -\frac{4\pi^{2}}{n} - \frac{2}{n^{3}} \nbrack{ \cos 2n\pi - 1 } } \\
+    &= -\frac{4\pi}{n}
+  \end{split}
+\end{equation}
+og har dermed Fourierrekka
+\begin{equation}
+  \label{eq:5}
+  f(x) \sim \frac{4\pi^{2}}{3} + \sum_{n=1}^{\infty} \nbrack{ \frac{4}{n^{2}} \cos nx - \frac{4\pi}{n} \sin nx }
+\end{equation}
+
+
+\section*{11.1.17}
+Finner de samme uttrykkene
+\begin{equation}
+  \label{eq:6}
+  \begin{split}
+    a_{n} &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos nx dx \\
+          &= \frac{2}{\pi} \int_{0}^{\pi} \bbrack{ -x\cos nx + \pi\cos nx}dx \\
+          &= \frac{2}{\pi} \bbrack{ -\frac{x}{n} \sin nx \Big|_{0}^{\pi} + \frac{1}{n} \int_{0}^{\pi} \sin nx dx } \\
+          &= \frac{2}{n^{2} \pi} \nbrack{ - \cos \pi n + 1 } \\
+    &= \left\lbrace
+      \begin{array}{ll}
+        \frac{4}{n^{2}\pi} & , n = 2k-1 \\
+        0 & , n = 2k
+      \end{array} \right. , k\in \M{N}{}
+  \end{split}
+\end{equation}
+ser så på
+\begin{equation}
+  \label{eq:7}
+  a_{0} = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x) dx = \frac{\pi}{2}
+\end{equation}
+og til slutt
+\begin{equation}
+  \label{eq:8}
+  b_{n} = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \sin nx dx = 0
+\end{equation}
+siden den resulterende funksjonen blir odde, og har dermed
+\begin{equation}
+  \label{eq:9}
+  f(x) \sim \frac{\pi}{2} + \sum_{n=1}^{\infty} \frac{4}{(2n-1)^{2}\pi} \cos \bbrack{ \nbrack{2n-1}x }
+\end{equation}
+
+
+\section*{11.1.21}
+Ser at funksjonen er antisymmetrisk og har dermed $a_{n} = 0$ og finner dermed kun
+\begin{equation}
+  \label{eq:10}
+  \begin{split}
+    b_{n} &= \frac{2}{\pi} \int_{0}^{\pi} \bbrack{ -x \sin nx + \pi \sin nx}dx \\
+    &= \frac{2}{\pi} \bbrack{ \frac{x}{n} \cos nx \Big|_{0}^{\pi} - \frac{1}{n} \int_{0}^{\pi} \cos nx dx - \frac{\pi}{n} \nbrack{ \cos n \pi - \cos 0 } } \\
+    &= \frac{2}{n}
+  \end{split}
+\end{equation}
+og har dermed
+\begin{equation}
+  \label{eq:11}
+  f(x) \sim \sum_{n=1}^{\infty} \frac{2}{n} \sin nx
+\end{equation}
+
+
+\section*{11.2.1}
+Vet at $e^{x}$ verken er odde eller like, mens $e^{-|x|}$ må være symmetrisk om $y=0$ og er dermed like, $x^{3}\cos nx$ er en odde funksjon ganget med en annen odde funksjon og er dermed like, $x^{2}\tan \pi x$ er en odde funksjon ganget med en like funksjone og er dermed odde, til slutt kan vi se på
+\begin{equation}
+  \label{eq:12}
+  \sinh x - \cosh x = \frac{1}{2} \bbrack{ e^{x} - e^{-x} - e^{x} - e^{-x} } = -e^{-x}
+\end{equation}
+som verken er like eller odde.
+
+
+\section*{11.2.10}
+Ser at funksjonen er odde og trenger derfor kun å finne
+\begin{equation}
+  \label{eq:14}
+  \begin{split}
+    b_{n} &= \frac{2}{4} \int_{0}^{4} \bbrack{ -x \sin \nbrack{ \frac{n\pi x}{4} } + 4\sin \nbrack{ \frac{n\pi x}{4} } } dx \\
+          &= \frac{2}{n\pi} \bbrack{ x\cos \nbrack{ \frac{n\pi x}{4} } \Big|_{0}^{4} - \int_{0}^{4} \cos \nbrack{ \frac{n\pi x}{4} }dx - 4 \nbrack{ \cos n\pi - 1 } } \\
+    &= \frac{8}{n\pi}
+  \end{split}
+\end{equation}
+og har dermed
+\begin{equation}
+  \label{eq:15}
+  f(x) \sim \sum_{n=1}^{\infty} \frac{8}{n\pi} \sin \nbrack{ \frac{n\pi x}{4} }
+\end{equation}
+
+
+\section*{11.2.17}
+Ser at funksjonen er odde og finner derfor ikke $b_{n}$
+\begin{equation}
+  \label{eq:16}
+  \begin{split}
+    a_{n} &= 2 \int_{0}^{1} \bbrack{ -x \cos n\pi x + \cos n\pi x } dx \\
+          &= 2\bbrack{ -\frac{x}{n\pi} \sin n\pi x \Big|_{0}^{1} + \frac{1}{n\pi} \int_{0}^{1} \sin n\pi x dx } \\
+          &= \frac{2}{n^{2}\pi^{2}} \nbrack{ -\cos n\pi + 1 } \\
+    &= \left\lbrace
+      \begin{array}{ll}
+        \frac{2}{n^{2}\pi^{2}} & , n = 2k-1 \\
+        0 & , n = 2k
+      \end{array} \right. , k\in \M{N}{}
+  \end{split}
+\end{equation}
+og har
+\begin{equation}
+  \label{eq:17}
+  a_{0} = \frac{1}{2} \int_{-1}^{1} f(x) dx = \frac{1}{2}
+\end{equation}
+og har dermed
+\begin{equation}
+  \label{eq:18}
+  f(x) \sim \frac{1}{2} + \sum_{n=1}^{\infty} \frac{2}{\pi^{2} \nbrack{2n-1}^{2}} \cos \bbrack{ \nbrack{2n-1} \pi x }
+\end{equation}
+
+
+\section*{11.2.24}
+Finner først Fourier-cosinus-rekka til $f(x)$
+\begin{equation}
+  \label{eq:19}
+  \begin{split}
+    a_{n} &= \frac{2}{4} \int_{0}^{4} f(x) \cos \nbrack{ \frac{n\pi x}{4} }dx \\
+    &= \frac{1}{2} \int_{2}^{4} \cos \nbrack{ \frac{n\pi x}{4} }dx \\
+    &= \frac{2}{n\pi} \nbrack{ \sin n\pi - \sin \nbrack{ \frac{n\pi}{2} } } \\
+    &= \left\lbrace
+      \begin{array}{ll}
+        -\frac{2}{n\pi} & , n = 4k - 3 \\
+        \frac{2}{n\pi} & , n = 4k - 1 \\
+        0 & , n = 2k \\
+      \end{array} \right. , k\in \M{N}{}
+  \end{split}
+\end{equation}
+og har $a_{0} = 2\cdot 2\cdot 1 / 8 = 1/2$
+og har da Fourier-cosinus-rekka
+\begin{equation}
+  \label{eq:20}
+  f(x) \sim \frac{1}{2} + \sum_{n=1}^{\infty} \cbrack{ \frac{2}{\nbrack{4n-3} \pi} \cos \bbrack{ \frac{\nbrack{4n-1} \pi x}{4} }
+  -\frac{2}{\nbrack{4n-3}\pi} \cos \bbrack{ \frac{\nbrack{4n-3} \pi x}{4} } }
+\end{equation}
+finner så Fourier-sinus-rekka og har da
+\begin{equation}
+  \label{eq:21}
+  b_{n} = \frac{1}{2} \int_{2}^{4} \sin \nbrack{\frac{n\pi x}{4}}dx = \frac{2}{n\pi} \bbrack{ -\cos n\pi + \cos \nbrack{ \frac{n\pi}{2} }}
+  = \left\lbrace
+    \begin{array}{ll}
+      \frac{2}{n\pi} & , n = 2k-1 \\
+      -\frac{4}{n\pi} & , n = 4k - 2 \\
+      0 & , n = 4k
+    \end{array} \right. , k \in \M{N}{}
+\end{equation}
+
+
+\section*{11.2.29}
+Ser på $f(x) = \sin x$ for $0 < x < \pi$ og ser først på Fourier-sinus-rekka til $f(x)$ og ved å periodisk utvide til en odde funksjon får vi $\sin x, \forall x$ og har dermed at Fourier-sinus-rekka er gitt ved
+\begin{equation}
+  \label{eq:13}
+  f(x) \sim \sin x
+\end{equation}
+ser så på Fourier-cosinus-rekka og har dermed
+\begin{equation}
+  \label{eq:22}
+  \begin{split}
+    a_{n} &= \frac{2}{\pi} \int_{0}^{\pi} \sin x \cos nx dx \\
+          &= \frac{1}{2\pi} \int_{0}^{\pi} \bbrack{ ie^{-ix} - ie^{ix} } \bbrack{ e^{inx} + e^{-inx} }dx \\
+          &= \frac{1}{2\pi} \int_{0}^{\pi} \bbrack{ ie^{ix(n-1)} + ie^{ix(-n-1)} - ie^{ix(n+1)} - ie^{ix(-n+1)} }dx \\
+          &= \frac{1}{2\pi} \bbrack{ \frac{(-1)^{n-1} - 1}{n-1} + \frac{(-1)^{-n-1} - 1}{-n-1} - \frac{(-1)^{n+1} - 1}{n+1} - \frac{(-1)^{-n+1} - 1}{-n+1} } \\
+          &= \frac{1}{2\pi} \bbrack{ \frac{2(-1)^{n-1} - 2}{n-1} - \frac{2(-1)^{n+1} - 2}{n+1} } \\
+          &= \frac{1}{2\pi} \bbrack{ \frac{ 4(-1)^{n+1} - 4 }{n^{2} - 1} } \\
+          &= \frac{2\bbrack{ (-1)^{n+1} - 1 }}{\pi \nbrack{ n^{2} - 1 }}
+  \end{split}
+\end{equation}
+
+ser så at denne rekka ikke er definert for $n=1$ og finner da
+\begin{equation}
+  \label{eq:23}
+  a_{1} = \frac{2}{\pi} \int_{0}^{\pi} \sin x \cos x dx = \frac{1}{\pi} \int_{0}^{\pi} \sin 2x dx = 0
+\end{equation}
+og finner så
+\begin{equation}
+  \label{eq:24}
+  a_{0} = \frac{1}{\pi} \int_{0}^{\pi} \sin x dx = \frac{1}{\pi} \bbrack{ -\cos \pi + 1 } = \frac{2}{\pi}
+\end{equation}
+og har dermed Fourier-cosinus-rekka
+\begin{equation}
+  \label{eq:25}
+  f(x) \sim \frac{2}{\pi} + \sum_{n=2}^{\infty} \frac{2\bbrack{ (-1)^{n+1} - 1 }}{\pi \nbrack{ n^{2} - 1 }} \cos nx
+\end{equation}
+
+
+
+\section*{11.3.15}
+
+
+
+
+\end{document}

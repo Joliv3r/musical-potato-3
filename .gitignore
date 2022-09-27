@@ -5,3 +5,7 @@
 *.gz
 *.fdb_latexmk
 *.log
+*.dvi
+*.rip
+**/.auctex-auto/
+**/.ipynb_checkpoints/
