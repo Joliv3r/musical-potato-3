@@ -1,0 +1,36 @@
+* Målinger
+** Romtempteratur = 25.2 C
+** Resistans Boltzmannlampe = 0.270 Ohm + 0.002 Ohm
+* Utstyr
+** Leslie's Cube (Thermal Radiation Cube)
+*** PASCO Scientific TD-8554A
+*** Max. 100W lyspære
+*** 220V
+*** E-5776 A
+** Thermopile (Thermal Radiation Sensor)
+*** PASCO Scientific TD-8553
+*** Spectral Response 0.5 µm to 40 µm
+*** Sensitivity 22 mW/mW
+*** E-5768
+** Power Supply
+*** TTi PL155-P
+*** 15V, 5A
+*** E-5777
+*** Serial number: 338283
+** Stefan Boltzmann lamp
+*** PASCO Scientific TD-8555
+*** Max. 13V
+*** E-5771 B
+** 3 Multimeters
+*** TENMA 72-7770
+*** Serial numbers
+**** H145047633
+**** H145047413
+**** H145047618
+** Multimeter
+*** TENMA 72-7732
+*** Serial number 1100420513
+*** E-5800
+** Wheatstone Bridge
+** Termometer
+** Stativ med bane

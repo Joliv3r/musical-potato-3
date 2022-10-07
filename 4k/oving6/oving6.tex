@@ -41,6 +41,8 @@
 \newcommand{\Lplc}[1]{\mathscr{L}\bbrack{ #1 } (s)}
 \newcommand{\iLplc}[1]{\mathscr{L}^{-1}\bbrack{ #1 } (t)}
 \newcommand{\til}[1]{\overset{~}{#1}}
+\newcommand{\fft}[1]{\mathcal{F} \bbrack{ #1 }}
+\newcommand{\ifft}[1]{\mathcal{F}^{-1} \bbrack{ #1 }}
 
 \title{Innlevering 6}
 \author{Jacob Oliver Bruun}
@@ -291,6 +293,128 @@ og har dermed
   \label{eq:41}
   u(x, y) = \sum_{n=1}^{\infty} \frac{100}{n\pi \sinh n\pi} \sinh \frac{n\pi y}{24} \sin\frac{n\pi x}{24}
 \end{equation}
+
+
+
+\section*{12.7.1}
+Har
+\begin{equation}
+  \label{eq:35}
+  2 u_{x} + 3u_{t} = 0, \;\; u(x, 0) = f(x)
+\end{equation}
+skriver om til
+\begin{equation}
+  \label{eq:51}
+  u_{t} + cu_{x} = 0, c = \frac{2}{3}
+\end{equation}
+gjør variabelskiftet $\xi = x + ct, \eta = x - ct$ og har dermed
+\begin{equation}
+  \label{eq:52}
+  \frac{\partial}{\partial x}
+  = \frac{\partial \xi}{\partial x} \frac{\partial}{\partial \xi} + \frac{\partial \eta}{\partial x} \frac{\partial}{\partial \eta}
+  = \frac{\partial}{\partial \xi} + \frac{\partial}{\partial \eta}
+\end{equation}
+og
+\begin{equation}
+  \label{eq:53}
+  \frac{\partial}{\partial t}
+  = \frac{\partial \xi}{\partial t} \frac{\partial}{\partial \xi} + \frac{\partial \eta}{\partial t} \frac{\partial}{\partial \eta}
+  = c\bbrack{ \frac{\partial}{\partial \xi} - \frac{\partial}{\partial\eta} }
+\end{equation}
+og har dermed likningen
+\begin{equation}
+  \label{eq:54}
+  \begin{split}
+    cu_{\xi} - cu_{\eta} + cu_{\xi} + cu_{\eta} &= 0 \\
+    2cu_{\xi} &= 0
+  \end{split}
+\end{equation}
+som da gir oss $u = F(\eta) = F(x - ct)$ ser at hvis vi setter $t=0$ får vi
+\begin{equation}
+  \label{eq:56}
+  u(x, 0) = F(x) = f(x)
+\end{equation}
+og har dermed
+\begin{equation}
+  \label{eq:57}
+  u(x, 0) = f\nbrack{ x - \frac{2}{3}t }
+\end{equation}
+
+
+
+\section*{12.7.2}
+Har
+\begin{equation}
+  \label{eq:58}
+  2tu_{x} + 3u_{t} = 0, \;\; u(x, 0) = f(x)
+\end{equation}
+ser på konstante linjer i planet som da har formen $x = x(r), t = t(r)$ og har da ved kjerneregelen
+\begin{equation}
+  \label{eq:59}
+  \frac{du}{dr} = \frac{\partial u}{\partial t} \frac{dt}{dr} + \frac{\partial u}{\partial x}\frac{dx}{dr} = 0
+\end{equation}
+og har da
+\begin{equation}
+  \label{eq:60}
+  \frac{dt}{dr} = 1, \frac{dx}{dr} = \frac{2t}{3}
+\end{equation}
+ved å multiplisere den opprinnelige likningen med $1/t$ får vi
+\begin{equation}
+  \label{eq:62}
+  \frac{dt}{dr} = \frac{1}{t}, \frac{dx}{dr} = \frac{2}{3}
+\end{equation}
+siden $r=0$ ikke må være definert ser vi bort ifra den ene vilkårlige variabelen og har
+\begin{equation}
+  \label{eq:63}
+  r = \frac{t^{2}}{2}, \;\; r = \frac{3}{2}x + C
+\end{equation}
+som kan skrives om til
+\begin{equation}
+  \label{eq:64}
+  r = \frac{t^{2}}{2}, C = \frac{t^{2}}{2} - \frac{3}{2}x
+\end{equation}
+og siden $u$ er konstant på kurva så har vi
+\begin{equation}
+  \label{eq:65}
+  u = F\nbrack{ \frac{t^{2}}{2} - \frac{3}{2}x }
+\end{equation}
+ved å sette $t=0$ har vi
+\begin{equation}
+  \label{eq:66}
+  F\nbrack{ -\frac{3}{2}x } = f(x) \Rightarrow F(x) = f\nbrack{-\frac{2}{3} x}
+\end{equation}
+og har dermed løsningen
+\begin{equation}
+  \label{eq:67}
+  u(x, t) = f\nbrack{ x - \frac{t^{2}}{3} }
+\end{equation}
+
+
+
+\section*{12.7.3}
+Har
+\begin{equation}
+  \label{eq:68}
+  tu_{xx} = u_{t}, \;\; u(x, 0) = f(x)
+\end{equation}
+med $x\in\M{R}{}, t \geq 0$ og kan bruke Fouriertransformen
+\begin{equation}
+  \label{eq:69}
+  -tw^{2} \hat{u} = \hat{u}_{t} \Rightarrow \hat{u} = Ae^{-w^{2}t^{2}}
+\end{equation}
+ved å sette $t=0$ får vi $A = \hat{u}(x, 0)$ og har dermed
+\begin{equation}
+  \label{eq:70}
+  \begin{split}
+    u &= \ifft{ \hat{f}(x) e^{-w^{2}t^{2}} } \\
+      &= \frac{1}{\sqrt{2\pi}} \bbrack{ f(x) * e^{-w^{2}t^{2}} } \\
+      &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(x-s) e^{-s^{2}t^{2}} ds \\
+  \end{split}
+\end{equation}
+
+
+
+
 
 
 
