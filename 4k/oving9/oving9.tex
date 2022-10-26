@@ -125,18 +125,101 @@ og har da
 som da gir oss
 \begin{equation}
   \label{eq:10}
-  \int_{\mathcal{C}} \re z dz = \int_{1}^{3} \bbrack{ \re z(t) } z'(t) dt = \int_{1}^{3} \bbrack{ t + t^{2}i - it } dt =
+  \int_{\mathcal{C}} \re z dz = \int_{1}^{3} \bbrack{ \re z(t) } z'(t) dt = \int_{1}^{3} \bbrack{ t + t^{2}i - it } dt = 4(1-i) + \frac{26}{3}i = 4 + \frac{14}{3} i
 \end{equation}
 
 
-
-\section*{14.1.22}
 \section*{14.1.26}
+Ser på integralet
+\begin{equation}
+  \label{eq:11}
+  \int_{\mathcal{C}} (z + z^{-1}) dz, \;\;\;\; \mathcal{C} : z(t) = e^{it}, t\in \left[ 0, 2\pi \right)
+\end{equation}
+kan dele opp og ser fordi $z$ er analytisk på hele $\M{C}{}$ så har vi
+\begin{equation}
+  \label{eq:12}
+  \int_{\mathcal{C}} (z + z^{-1}) dz = \int_{\mathcal{C}} z dz + \int_{\mathcal{C}} z^{-1}dz = \int_{\mathcal{C}} z^{-1} dz
+\end{equation}
+kan så finne
+\begin{equation}
+  \label{eq:13}
+  \int_{\mathcal{C}} z^{-1} dz = \int_{0}^{2\pi} \frac{ie^{it}}{e^{it}}dt = 2\pi i
+\end{equation}
+
+
 \section*{14.1.29}
+Ser på integralet
+\begin{equation}
+  \label{eq:14}
+  \int_{\mathcal{C}} \im z^{2} dz = \int_{\mathcal{C}_{1}} \im z^{2} dz + \int_{\mathcal{C}_{2}} \im z^{2} dz + \int_{\mathcal{C}_{3}} \im z^{2} dz
+\end{equation}
+med $\mathcal{C}$ gitt av trekanten gitt av punktene $0, 1, i$ og $\mathcal{C}_{1}$ linja mellom $0, 1$ og $\mathcal{C}_{2}$ linja mellom $1, i$ og $\mathcal{C}_{3}$ linja mellom $i, 0$. Vet at $\im z^{2} = 0 \;\; \forall z \in \M{R}{}$ og har dermed integralet over $\mathcal{C}_{1}$ lik 0. Har da parameterfremstillingene
+\begin{equation}
+  \label{eq:15}
+  \begin{array}{lll}
+    \mathcal{C}_{2} :& z(t) = 1 - t + it & , t\in \bbrack{0, 1} \\
+    \mathcal{C}_{3} :& z(t) = it & , t\in \bbrack{0, 1}
+  \end{array}
+\end{equation}
+og finner så
+\begin{equation}
+  \label{eq:16}
+  \begin{split}
+    \int_{\mathcal{C}} \im z^{2} dz &= \int_{0}^{1} (i-1) \im \bbrack{ (1 - t + it)^{2} } dt + \int_{0}^{1} i \im \bbrack{ (it)^{2} } dt \\
+                                    &= \int_{0}^{1} (i-1) \bbrack{ 2t - 2t^{2} } dt \\
+                                    &= (2i - 2) \int_{0}^{1} \bbrack{ t - t^{2}} dt \\
+                                    &= (2i - 2) \bbrack{ \frac{1}{2} - \frac{1}{3} } \\
+                                    &= \frac{1}{3}i - \frac{1}{3}
+  \end{split}
+\end{equation}
+
+
 \section*{14.2.4}
+Har at en funksjon, la oss kalle den $f(z)$, har følgende egenskaper
+\begin{equation}
+  \label{eq:17}
+  \int_{R_{1}} f(z)dz = 2, \;\;\;\; \int_{R_{3}} f(z)dz = 6
+\end{equation}
+hvor $R_{r}$ er sirkelen med sentrum i origo og radius $r$, vil se om funksjonen er analytisk i annulusen $1 < |z| < 3$ og kaller dette området $R$. Vet at for en analytisk funksjon på hele domenet $D$ og med en lukket kurve $\mathcal C \subset D$ har vi
+\begin{equation}
+  \label{eq:18}
+  \oint_{\mathcal{C}} f(z) dz = 0
+\end{equation}
+siden vi vet at
+\begin{equation}
+  \label{eq:19}
+  \oint_{\partial R} f(z) dz = \int_{R_{1}} f(z) dz - \int_{R_{3}} f(z) dz = -4 \neq 0
+\end{equation}
+så er ikke $f(z)$ analytisk på hele $R$.
+
+
 \section*{14.2.13}
+Ser på integralet over enhetssirkelen mot klokka
+\begin{equation}
+  \label{eq:20}
+  \oint_{\mathcal{C}} \nbrack{z^{2} - 1.2}^{-1} dz
+\end{equation}
+og siden dette er integralet over en lukket kurve i et enkeltsammenhengende domene hvor integranden er analytisk har vi
+\begin{equation}
+  \label{eq:22}
+  \oint_{\mathcal{C}} \nbrack{z^{2} - 1.2}^{-1} dz = 0
+\end{equation}
+
 \section*{14.2.22}
+Ser på integralet
+\begin{equation}
+  \label{eq:23}
+  \oint_{\mathcal{C}} \re z dz, \;\;\;\; \mathcal{C} : z(t) = e^{it}, t\in \bbrack{ 0, \pi }
+\end{equation}
+og har dermed
+\begin{equation}
+  \label{eq:24}
+  \oint_{\mathcal{C}} \re z dz = \int_{0}^{\pi} \re \bbrack{ e^{it} } ie^{it}dt = i\int_{0}^{\pi} e^{it} dt = e^{i\pi} - 1 = -2
+\end{equation}
+
+
 \section*{14.2.23}
+
 \section*{14.2.28}
 
 \end{document}
