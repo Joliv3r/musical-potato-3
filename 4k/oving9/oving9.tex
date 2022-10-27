@@ -209,17 +209,79 @@ og siden dette er integralet over en lukket kurve i et enkeltsammenhengende dome
 Ser på integralet
 \begin{equation}
   \label{eq:23}
-  \oint_{\mathcal{C}} \re z dz, \;\;\;\; \mathcal{C} : z(t) = e^{it}, t\in \bbrack{ 0, \pi }
+  \oint_{\mathcal{C}} \re z dz = \int_{\mathcal{C}_{1} \cup \mathcal{C}_{2}}  \re z dz,
+  \;\;\;\; \mathcal{C}_{1} : z(t) = e^{it}, t\in \bbrack{ 0, \pi }, \mathcal{C}_{2} : z(t) = t, t \in \bbrack{-1, 1}
 \end{equation}
 og har dermed
 \begin{equation}
   \label{eq:24}
-  \oint_{\mathcal{C}} \re z dz = \int_{0}^{\pi} \re \bbrack{ e^{it} } ie^{it}dt = i\int_{0}^{\pi} e^{it} dt = e^{i\pi} - 1 = -2
+  \int_{\mathcal{C}_{1}} \re z dz = \int_{0}^{\pi} \re \bbrack{ e^{it} } ie^{it}dt = i\int_{0}^{\pi} e^{it} dt = e^{i\pi} - 1 = -2
+\end{equation}
+og
+\begin{equation}
+  \label{eq:25}
+  \int_{\mathcal{C}_{2}} \re z dz = \int_{-1}^{1} t dt = 0
+\end{equation}
+og har dermed
+\begin{equation}
+  \label{eq:26}
+  \oint_{\mathcal{C}} \re z dz = -2
 \end{equation}
 
 
 \section*{14.2.23}
+Ser på integralet
+\begin{equation}
+  \label{eq:21}
+  \oint_{\mathcal{C}} \frac{2z-1}{z^{2} - z} dz
+\end{equation}
+kaller integranden $f(z)$ og ser at for $z=0,1$ er funksjonen ikke analytisk. Ser dermed på kurvene $\mathcal{C}_{1}, \mathcal{C}_{2}$ som er en sirkel med radius 1 rundt disse punktene og har da
+\begin{equation}
+  \label{eq:31}
+  \oint_{\mathcal{C}} f(z) dz = \oint_{\mathcal{C}_{1}} f(z) dz + \oint_{\mathcal{C}_{2}} f(z) dz
+\end{equation}
+har da parameterfremstillingene
+\begin{equation}
+  \label{eq:33}
+  \begin{array}{lll}
+    \mathcal{C}_{1}: & z(t) = e^{it} & t \in \left[ 0, 2\pi \right) \\
+    \mathcal{C}_{2}: & z(t) = 2 + e^{it} & t \in \left[ 0, 2\pi \right)
+  \end{array}
+\end{equation}
+og kan dermed skrive
+\begin{equation}
+  \label{eq:32}
+  \begin{split}
+    \oint_{\mathcal{C}} f(z) dz
+    &= \int_{0}^{2\pi} \frac{2e^{it} - 1}{e^{it} \nbrack{ e^{it} - 1 }} ie^{it} dt + \int_{0}^{2\pi} \frac{ 4 + 2e^{it} - 1 }{ \nbrack{ 2+e^{it} } \nbrack{ 2 + e^{it} - 1 } } ie^{it} dt \\
+    &= i\int_{0}^{2\pi} \bbrack{ \frac{2e^{it} - 1}{e^{it} - 1} + \frac{ 3e^{it} + 2e^{2it} }{ \nbrack{e^{it}+2} \nbrack{e^{it}+1} } }dt \\
+    &= i \int_{0}^{2\pi} \frac{ \nbrack{2e^{it}-1} \nbrack{e^{2it} + 3e^{it} + 2} + 2e^{3it} + e^{2it} - 3e^{it} }{ \nbrack{e^{it}-1} \nbrack{e^{it}+1} \nbrack{e^{it}+2} } dt \\
+    &= i \int_{0}^{2\pi} \frac{ 4e^{3it} + 6e^{2it} - 2e^{it} - 2 }{\nbrack{e^{it}-1} \nbrack{e^{it}+1} \nbrack{e^{it}+2}} dt
+  \end{split}
+\end{equation}
+
 
 \section*{14.2.28}
+Ser på integralet
+\begin{equation}
+  \label{eq:27}
+  \oint_{\mathcal{C}} \frac{\tan \frac{z}{2}}{16z^{4} - 81} dz
+\end{equation}
+hvor $\mathcal{C}$ er kvadretet definert av hjørnene $\pm 1, \pm i$, og ser at integranden ikke er analytisk i
+\begin{equation}
+  \label{eq:28}
+  z^{4} = \frac{81}{16} \Rightarrow |z| = \frac{3}{2}
+\end{equation}
+den er heller ikke analytisk for
+\begin{equation}
+  \label{eq:29}
+  \cos z = 0 \Rightarrow z = \frac{\pi}{2} + \pi k, k \in \M{Z}{}
+\end{equation}
+vet at på kvadratets maksimale distanse fra origo er 1 og funksjonen er analytisk innenfor dette området, og har dermed
+\begin{equation}
+  \label{eq:30}
+  \oint_{\mathcal{C}} \frac{\tan \frac{z}{2}}{16z^{4} - 81} dz = 0
+\end{equation}
+
 
 \end{document}
