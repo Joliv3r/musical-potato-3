@@ -1,0 +1,144 @@
+\documentclass{report}
+
+\usepackage{amsfonts, amsmath, amssymb, amsthm}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+
+\newcommand{\M}[2]{\mathbb{#1}^{#2}}
+\newcommand{\twovector}[2]{\left[ \begin{array}{c} #1 \\ #2 \\ \end{array} \right]}
+\newcommand{\threevector}[3]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ \end{array} \right]}
+\newcommand{\fourvector}[4]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ #4 \\ \end{array} \right]}
+\newcommand{\fivevector}[5]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ #4 \\ #5 \\ \end{array} \right]}
+\newcommand{\sixvector}[6]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ #4 \\ #5 \\ #6 \\ \end{array} \right]}
+\newcommand{\sevenvector}[7]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ #4 \\ #5 \\ #6 \\ #7 \\ \end{array} \right]}
+\newcommand{\eightvector}[8]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ #4 \\ #5 \\ #6 \\ #7 \\ #8 \\ \end{array} \right]}
+\newcommand{\ninevector}[9]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ #4 \\ #5 \\ #6 \\ #7 \\ #8 \\ #9 \\ \end{array} \right]}
+\newcommand{\nbrack}[1]{\left( #1 \right)}
+\newcommand{\bbrack}[1]{\left[ #1 \right]}
+\newcommand{\cbrack}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\abrack}[1]{\left< #1 \right>}
+\newcommand{\linebrack}[1]{\left| #1 \right|}
+\newcommand{\twomatrix}[4]{\bbrack{
+    \begin{array}{cc}
+      #1 & #2 \\
+      #3 & #4 \\
+    \end{array}
+  }
+}
+\newcommand{\threematrix}[9]{\bbrack{
+    \begin{array}{ccc}
+      #1 & #2 & #3 \\
+      #4 & #5 & #6 \\
+      #7 & #8 & #9 \\
+    \end{array}
+  }
+}
+\newcommand{\Lplc}[1]{\mathscr{L}\bbrack{ #1 } (s)}
+\newcommand{\iLplc}[1]{\mathscr{L}^{-1}\bbrack{ #1 } (t)}
+\newcommand{\Var}[1]{\text{Var} \bbrack{ #1 }}
+\newcommand{\std}[1]{\text{E} \bbrack{ #1 }}
+\newcommand{\Prob}[1]{\text{P} \bbrack{ #1 }}
+
+\title{Innlevering 5}
+\author{Jacob Oliver Bruun}
+\date{\today}
+
+\makeatletter
+\let\inserttitle\@title
+\let\insertauthor\@author
+\makeatother
+
+\pagestyle{fancy}
+\chead{\insertauthor}
+\lhead{\inserttitle}
+\rhead{\today}
+
+\parindent 0ex
+
+\begin{document}
+
+\section*{Oppg. 1}
+Har en normalfordeling med ukjent $\mu$ og $\sigma^{2} = 0.060^{2}$ \\
+
+\textbf{a)}
+Antar $\mu = 6.8$ og har da
+\begin{equation}
+  \label{eq:1}
+  \Prob{ X < 6.74 } = \Prob{ \frac{X-\mu}{\sigma} < \frac{6.74 - \mu}{\sigma}} = \Prob{ Z < -1 } = 0.1587
+\end{equation}
+ved å slå opp i tabell. Kan så finne $\Prob{6.74 < X < 6.86}$, men siden normalfordelingen er lik på begge sider av $\mu$ har vi
+\begin{equation}
+  \label{eq:2}
+  \Prob{6.74 < X < 6.86} = 1 - 2\Prob{ X < 6.74 } = 0.6826
+\end{equation}
+til slutt ser vi på $\Prob{ |X - \mu| > 0.06 }$ og har da
+\begin{equation}
+  \label{eq:3}
+  \Prob{ |X - \mu| > 0.06 } = \Prob{X < 6.74} + \Prob{X > 6.86} = 1 - \Prob{6.74 < X < 6.86} = 0.3174
+\end{equation}
+
+\textbf{b)}
+Ser på $Y = \sum_{i=1}^{5} X_{i}/5$ og vet ikke lenger hva $\mu$ er, kan dermed se på
+\begin{equation}
+  \label{eq:5}
+  \begin{split}
+    \Var{Y} &= \std{\nbrack{Y-\mu}^{2}} \\
+    \sigma^{2}_{Y} &= \std{Y^{2}} - \std{Y}^{2} \\
+    \sigma^{2}_{Y} &= \std{Y^{2}} - \mu^{2}
+  \end{split}
+\end{equation}
+
+
+
+\section*{Oppg. 2}
+\textbf{a)}
+Ser på poissonfordelingen
+\begin{equation}
+  \label{eq:6}
+  f(x) = \frac{\lambda^{x}}{x!} e^{-\lambda}, x\in \M{N}{}
+\end{equation}
+antar $\lambda = 15$ og ser da at vi har
+\begin{equation}
+  \label{eq:7}
+  \std{X} = \mu = \lambda = 15
+\end{equation}
+og har dermed
+\begin{equation}
+  \label{eq:8}
+  \Prob{X>20} = 1 - \Prob{X\leq 20} = 0.083
+\end{equation}
+og
+\begin{equation}
+  \label{eq:9}
+  \Prob{10\leq X < 20} = \Prob{X<20} - \Prob{X < 10} = 0.8053
+\end{equation}
+
+\textbf{b)}
+Antar så at vi ikke kjenner $\lambda$ og har $\hat{\lambda} = \overline{X} = 359/30$ og har da fra sentralgrenseteoremet at dette kan tilnærmes en standard normalfordeling
+\begin{equation}
+  \label{eq:10}
+  N(z; 0,1), Z = \frac{\overline{X} - \mu}{\sigma} \sqrt{n}
+\end{equation}
+og vi bruker variansen i en poissonfordeling som $\sigma$ og dermed
+\begin{equation}
+  \label{eq:13}
+  \sigma = \Var{X} = \lambda
+\end{equation}
+vil ha et konfidensintervall med $99\%$ sannsynlighet og må dermed ha
+\begin{equation}
+  \label{eq:11}
+  0.99 = \int_{-\beta}^{\beta} N(z; 0, 1) dz
+\end{equation}
+slår så opp i tabell og finner at for $\alpha = 0.005$ på hver side av normalfordelingen har vi $\beta = 2.576$ og har dermed konfidensintervallet
+\begin{equation}
+  \label{eq:12}
+  \mu \in \nbrack{  }
+\end{equation}
+
+
+
+\end{document}
