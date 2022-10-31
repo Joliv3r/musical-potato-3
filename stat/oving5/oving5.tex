@@ -85,11 +85,25 @@ til slutt ser vi på $\Prob{ |X - \mu| > 0.06 }$ og har da
 Ser på $Y = \sum_{i=1}^{5} X_{i}/5$ og vet ikke lenger hva $\mu$ er, kan dermed se på
 \begin{equation}
   \label{eq:5}
+  \Var{Y} = \frac{1}{25} \bbrack{ 5\sigma^{2} } = \frac{1}{5} \sigma^{2}
+\end{equation}
+vet at $Y$ er normalfordelt og har da
+\begin{equation}
+  \label{eq:20}
+  \Prob{|Y-\mu| > 0.06} = 2\Prob{}
+\end{equation}
+og ser videre på
+\begin{equation}
+  \label{eq:18}
   \begin{split}
-    \Var{Y} &= \std{\nbrack{Y-\mu}^{2}} \\
-    \sigma^{2}_{Y} &= \std{Y^{2}} - \std{Y}^{2} \\
-    \sigma^{2}_{Y} &= \std{Y^{2}} - \mu^{2}
+    \overline{x} - z_{0.025}\frac{\sigma}{\sqrt{n}} &= 6.736 \\
+    \overline{x} + z_{0.025}\frac{\sigma}{\sqrt{n}} &= 6.784 \\
   \end{split}
+\end{equation}
+og har dermed konfidensintervallet på $95\%$
+\begin{equation}
+  \label{eq:19}
+  \mu \in \nbrack{ 6.736, 6.784 }
 \end{equation}
 
 
@@ -139,6 +153,33 @@ slår så opp i tabell og finner at for $\alpha = 0.005$ på hver side av normal
   \mu \in \nbrack{  }
 \end{equation}
 
+
+
+\section*{Oppg. 3}
+\textbf{a)}
+Ser at $X$ er definert slik at for hver del av DNA-strukturen så er det to muligheter, at det er en match eller ikke. Siden det sjekkes for $n$ deler som er uavhengige er $X$ binomisk fordelt
+\begin{equation}
+  \label{eq:4}
+  f(x) = b(x; n, p) = \binom{n}{x} p^{x}(1-p)^{n-x}, x \in \M{N}{} \cup \cbrack{0}
+\end{equation}
+kan dermed finne ved $n=5$
+\begin{equation}
+  \label{eq:14}
+  \Prob{X=2} = f(2) = \frac{5!}{2!(5-2)!} \cdot 0.15^{2} \cdot (1-0.15)^{5-2} = 0.138
+\end{equation}
+og
+\begin{equation}
+  \label{eq:15}
+  \Prob{X \geq 2} = 1 - \Prob{X=1} - \Prob{X=0} = 1 - 5\cdot 0.15 \cdot 0.85^{4} - 0.85^{5} = 0.165
+\end{equation}
+og
+\begin{equation}
+  \label{eq:16}
+  \Prob{X = 2 | X \geq 2} = \frac{\Prob{X=2}}{\Prob{X \geq 2}} = 0.836
+\end{equation}
+
+\textbf{b)}
+Ser på sjansen for en type 1 feil og har da
 
 
 \end{document}
