@@ -87,12 +87,12 @@ Ser på $Y = \sum_{i=1}^{5} X_{i}/5$ og vet ikke lenger hva $\mu$ er, kan dermed
   \label{eq:5}
   \Var{Y} = \frac{1}{25} \bbrack{ 5\sigma^{2} } = \frac{1}{5} \sigma^{2}
 \end{equation}
-vet at $Y$ er normalfordelt og har da
+vet at $Y$ er normalfordelt og at det ikke har noe å si hvor $\mu$ er og kan dermed anta $\mu = 0$ og da
 \begin{equation}
   \label{eq:20}
-  \Prob{|Y-\mu| > 0.06} = 2\Prob{}
+  \Prob{|Y| > 0.06} = 2\Prob{Y > 0.06} = 2\Prob{\frac{\sqrt{5} Y}{\sigma} > \frac{0.06\sqrt{5}}{\sigma}} = 0.025
 \end{equation}
-og ser videre på
+ved oppslag i tabell og ser videre på
 \begin{equation}
   \label{eq:18}
   \begin{split}
@@ -140,7 +140,7 @@ Antar så at vi ikke kjenner $\lambda$ og har $\hat{\lambda} = \overline{X} = 35
 og vi bruker variansen i en poissonfordeling som $\sigma$ og dermed
 \begin{equation}
   \label{eq:13}
-  \sigma = \Var{X} = \lambda
+  \sigma = \Var{X} = \lambda = \overline{X}
 \end{equation}
 vil ha et konfidensintervall med $99\%$ sannsynlighet og må dermed ha
 \begin{equation}
@@ -180,6 +180,31 @@ og
 
 \textbf{b)}
 Ser på sjansen for en type 1 feil og har da
+
+
+
+\section*{Oppg. 4}
+Har $X$ med normalfordeling med $\mu = 80, \sigma^{2} = 18^{2}$ og $Y = \sum_{n=1}^{16} X_{n}$ ser på
+\begin{equation}
+  \label{eq:17}
+  \Prob{X_{1} > 90} = \Prob{\frac{X_{1} - \mu}{\sigma} > \frac{90-\mu}{\sigma}} = 0.2877
+\end{equation}
+og vet at
+\begin{equation}
+  \label{eq:21}
+  \mu_{Y} = 16 \mu_{X}, \;\;\;\; \sigma_{X}^{2} = \frac{\sigma_{Y}^{2}}{16}
+\end{equation}
+har da
+\begin{equation}
+  \label{eq:22}
+  \std{Y} = 16\mu_{X} = 1280
+\end{equation}
+og
+\begin{equation}
+  \label{eq:23}
+  \Var{Y} = \frac{\sigma_{X}^{2}}{16} = 20.25
+\end{equation}
+
 
 
 \end{document}
