@@ -96,14 +96,14 @@ ved oppslag i tabell og ser videre på
 \begin{equation}
   \label{eq:18}
   \begin{split}
-    \overline{x} - z_{0.025}\frac{\sigma}{\sqrt{n}} &= 6.736 \\
-    \overline{x} + z_{0.025}\frac{\sigma}{\sqrt{n}} &= 6.784 \\
+    \overline{x} - z_{0.025}\frac{\sigma}{\sqrt{n}} &= 6.707 \\
+    \overline{x} + z_{0.025}\frac{\sigma}{\sqrt{n}} &= 6.813 \\
   \end{split}
 \end{equation}
 og har dermed konfidensintervallet på $95\%$
 \begin{equation}
   \label{eq:19}
-  \mu \in \nbrack{ 6.736, 6.784 }
+  \mu \in \nbrack{ 6.707, 6.813 }
 \end{equation}
 
 
@@ -132,25 +132,59 @@ og
 \end{equation}
 
 \textbf{b)}
-Antar så at vi ikke kjenner $\lambda$ og har $\hat{\lambda} = \overline{X} = 359/30$ og har da fra sentralgrenseteoremet at dette kan tilnærmes en standard normalfordeling
+Antar så at vi ikke kjenner $\lambda$ og har $\hat{\lambda} = \overline{X} = 359/30$ og har da fra sentralgrenseteoremet at dette kan tilnærmes en standard normalfordeling og kan se på
 \begin{equation}
   \label{eq:10}
-  N(z; 0,1), Z = \frac{\overline{X} - \mu}{\sigma} \sqrt{n}
+  Z = \frac{\overline{X} - \lambda}{\sigma}\sqrt{n}
 \end{equation}
 og vi bruker variansen i en poissonfordeling som $\sigma$ og dermed
 \begin{equation}
   \label{eq:13}
-  \sigma = \Var{X} = \lambda = \overline{X}
+  \sigma^{2} = \Var{X} = \overline{X}
 \end{equation}
 vil ha et konfidensintervall med $99\%$ sannsynlighet og må dermed ha
 \begin{equation}
   \label{eq:11}
-  0.99 = \int_{-\beta}^{\beta} N(z; 0, 1) dz
+  \begin{split}
+    \Prob{ -t_{0.005} < T < t_{0.005} } &= 0.99 \\
+    \Prob{ \overline{X} - t_{0.005} \frac{\sigma}{\sqrt{n}} < \lambda < \overline{X} + t_{0.005} \frac{\sigma}{\sqrt{n}} } &= 0.99
+  \end{split}
 \end{equation}
-slår så opp i tabell og finner at for $\alpha = 0.005$ på hver side av normalfordelingen har vi $\beta = 2.576$ og har dermed konfidensintervallet
+slår opp i tabell og finner $t_{0.005} = 2.750$ med frihetsgrad $\nu = 30$ og har dermed
 \begin{equation}
   \label{eq:12}
-  \mu \in \nbrack{  }
+  \lambda \in \nbrack{10.34, 13.59}
+\end{equation}
+
+\textbf{c)}
+Ser så på sannsynlighetsmaksimeringsestimatoren for $\lambda$ og definerer da
+\begin{equation}
+  \label{eq:24}
+  \begin{split}
+    L(x_{1}, x_{2}, \dots , x_{n} , y_{1}, y_{2}, \dots, y_{m}; \lambda)
+    &= \prod_{i = 1}^{n} f(x_{i}; \lambda) \cdot \prod_{j=1}^{m} f(y_{j}; \lambda) \\
+    &= \lambda^{\sum_{i=1}^{n} x_{i}} \frac{e^{-n\lambda}}{\prod_{i=1}^{n}x_{i}!} \cdot \nbrack{\frac{\lambda}{2}}^{\sum_{j=1}^{m}y_{j}} \frac{e^{-\frac{m\lambda}{2}}}{\prod_{j=1}^{m}y_{j}!} \\
+  \end{split}
+\end{equation}
+og finner så logaritmen av $L$
+\begin{equation}
+  \label{eq:25}
+  \ln L = \sum_{i=1}^{n} x_{i} \ln \lambda - n\lambda - \ln \prod_{i=1}^{n} x_{i}! + \sum_{j=1}^{m} y_{j} \ln \frac{\lambda}{2} - \frac{m\lambda}{2} - \ln \prod_{j=1}^{m} y_{j}!
+\end{equation}
+og deriverer så med hensyn på $\lambda$
+\begin{equation}
+  \label{eq:26}
+  \begin{split}
+    \frac{\partial L}{\partial \lambda} = 0 &= \sum_{i=1}^{n} x_{i} \frac{1}{\lambda} - n + \sum_{j=1}^{m} y_{j} \frac{1}{\lambda} - \frac{m}{2} \\
+    \lambda \nbrack{ n + \frac{1}{2}m } &= \sum_{i=1}^{n} x_{i} + \sum_{j=1}^{m} y_{j} \\
+    \lambda &= \frac{\sum_{i=1}^{n} x_{i} + \sum_{j=1}^{m} y_{j}}{n + \frac{1}{2}m} \\
+    \lambda &= \frac{\overline{x}n + \overline{y}m}{n + \frac{1}{2}m}
+  \end{split}
+\end{equation}
+og har dermed
+\begin{equation}
+  \label{eq:27}
+  \hat{\lambda} = \frac{\overline{x}n + \overline{y}m}{n + \frac{1}{2}m}
 \end{equation}
 
 
@@ -192,7 +226,7 @@ Har $X$ med normalfordeling med $\mu = 80, \sigma^{2} = 18^{2}$ og $Y = \sum_{n=
 og vet at
 \begin{equation}
   \label{eq:21}
-  \mu_{Y} = 16 \mu_{X}, \;\;\;\; \sigma_{X}^{2} = \frac{\sigma_{Y}^{2}}{16}
+  \mu_{Y} = 16 \mu_{X}, \;\;\;\; \sigma_{Y}^{2} = 16\sigma_{X}^{2}
 \end{equation}
 har da
 \begin{equation}
@@ -202,7 +236,33 @@ har da
 og
 \begin{equation}
   \label{eq:23}
-  \Var{Y} = \frac{\sigma_{X}^{2}}{16} = 20.25
+  \Var{Y} = 16\sigma_{X}^{2} = 4^{2} \cdot 18^{2} = 72^{2}
+\end{equation}
+og til slutt fordi $Y$ også er normalfordelt
+\begin{equation}
+  \label{eq:28}
+  \Prob{Y > 16\cdot 90} = \Prob{\frac{Y-\mu_{Y}}{\sigma_{Y}}\sqrt{n} > \frac{16\cdot 90 - \mu_{Y}}{\sigma_{Y}}\sqrt{n}} = \Prob{Z > 2.22} = 0.013
+\end{equation}
+ved oppslag i tabell. Dersom vi hadde sett bortifra uavhengighet kunne vi ikke brukt regnereglene for varians og forventningsverdi og de tre siste utregningene ville ikke vært rett. Vi trenger så vite sannsynlighetsfordelingen for å finne sannsynlighetene $\Prob{X_{1} > 90}, \Prob{Y > 16\cdot 90}$, men variansen og forventningsverdien er ikke avhengig av dette og disse vil da fortsatt stemme.
+
+\textbf{b)}
+Ser at vi kan skrive
+\begin{equation}
+  \label{eq:29}
+  \overline{x} = \frac{1591}{20}, S^{2} = \frac{1}{19} \sum_{i=1}^{20} \nbrack{ x_{i} - \overline{x} }^{2} = 192.471
+\end{equation}
+finner så et $90\%$ konfidensintervall
+\begin{equation}
+  \label{eq:30}
+  \begin{split}
+    \overline{x} - t_{0.05} \frac{S}{\sqrt{n}} &= 74.20 \\
+    \overline{x} + t_{0.05} \frac{S}{\sqrt{n}} &= 84.90 \\
+  \end{split}
+\end{equation}
+og har dermed
+\begin{equation}
+  \label{eq:31}
+  \mu \in \nbrack{74.20, 84.90}
 \end{equation}
 
 
