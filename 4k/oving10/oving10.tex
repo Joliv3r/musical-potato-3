@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{mathrsfs}
 \usepackage{comment}
+\usepackage{mathtools}
 
 \newcommand{\M}[2]{\mathbb{#1}^{#2}}
 \newcommand{\twovector}[2]{\left[ \begin{array}{c} #1 \\ #2 \\ \end{array} \right]}
@@ -42,6 +43,7 @@
 \newcommand{\iLplc}[1]{\mathscr{L}^{-1}\bbrack{ #1 } (t)}
 \newcommand{\im}{\text{Im}}
 \newcommand{\re}{\text{Re}}
+\newcommand{\limtoinf}[1]{\lim_{#1 \rightarrow \infty}}
 
 \title{Innlevering 10}
 \author{Jacob Oliver Bruun}
@@ -150,13 +152,139 @@ og har da
 
 
 \section*{14.4.7}
-\section*{14.4.16}
-\section*{15.1.17}
-\section*{15.1.18}
-\section*{15.2.5}
-\section*{15.2.10}
-\section*{15.2.14}
+Ser på integralet
+\begin{equation}
+  \label{eq:13}
+  \oint_{\mathcal{C}} \frac{\cos z}{z^{2n+1}} dz, \;\;\; n = 0, 1, \dots
+\end{equation}
+med $\mathcal{C}$ enhetssirkelen, kan da se at
+\begin{equation}
+  \label{eq:14}
+  f^{(2n)} = (-1)^{n} \cos z
+\end{equation}
+og har dermed
+\begin{equation}
+  \label{eq:15}
+  \oint_{\mathcal{C}} \frac{\cos z}{z^{2n+1}} dz = (-1)^{n} \cdot \frac{2\pi i}{(2n)!}
+\end{equation}
 
+
+\section*{14.4.16}
+Ser på integralet
+\begin{equation}
+  \label{eq:16}
+  \oint_{\mathcal{C}} \frac{e^{4z}}{z(z-2i)^{2}} dz
+\end{equation}
+med $\mathcal{C}$ er gitt ved $|z-i| = 3$ mot klokka og $|z| = 1$ med klokka og kan skrive
+\begin{equation}
+  \label{eq:17}
+  \begin{split}
+    \frac{1}{z(z-2i)^{2}} &= \frac{A}{z} + \frac{B}{z-2i} + \frac{C}{(z-2i)^{2}} \\
+    1 &= A(z-2i)^{2} + Bz(z-2i) + Cz \\
+    1 &= Az^{2} - 4Azi - 4A + Bz^{2} - 2Bzi + Cz
+  \end{split}
+\end{equation}
+og har fra dette $A = -1/4, B = 1/4, C = -i/2$ og dermed
+\begin{equation}
+  \label{eq:18}
+  \begin{split}
+    \oint_{\mathcal{C}} \frac{e^{4z}}{z(z-2i)^{2}}dz
+    &= \oint_{\mathcal{C}} \bbrack{ \frac{e^{4z}}{4(z-2i)} - \frac{e^{4z}}{4z} - \frac{ie^{4z}}{2(z-2i)^{2}}} dz \\
+    &= \frac{1}{4} \oint_{\mathcal{C}} \frac{e^{4z}}{z-2i} dz - \frac{1}{4} \oint_{\mathcal{C}} \frac{e^{4z}}{z} dz - \frac{i}{2} \oint_{\mathcal{C}} \frac{e^{4z}}{(z-2i)^{2}} \\
+    &= \frac{1}{2} \pi i e^{8i} - 0 + 4\pi e^{8i} \\
+    &= \nbrack{ 4 + \frac{1}{2}i }\pi e^{8i}
+  \end{split}
+\end{equation}
+
+
+\section*{15.1.17}
+Ser på rekka
+\begin{equation}
+  \label{eq:19}
+  \sum_{n=2}^{\infty} \frac{(-i)^{n}}{\ln n}
+\end{equation}
+kan skrive om til
+\begin{equation}
+  \label{eq:20}
+  f(z) = \sum_{n=2}^{\infty} \frac{z^{n}}{\ln n}
+\end{equation}
+og kan finne konvergensradius ved Cauchy-Hardamard
+
+
+\section*{15.1.18}
+Ser på rekka
+\begin{equation}
+  \label{eq:21}
+  \sum_{n=1}^{\infty} n^{2} \nbrack{ \frac{i}{4} }^{n}
+\end{equation}
+og ser ved å bruke rottesten
+\begin{equation}
+  \label{eq:22}
+  \lim_{n \rightarrow \infty} \sqrt[n]{|z_{n}|} = \lim_{n \rightarrow \infty} n^{\frac{2}{n}} \frac{1}{4} = \frac{1}{4} \lim_{n \rightarrow \infty} n^{\frac{2}{n}} = \frac{1}{4} \lim_{n \rightarrow \infty} \exp \cbrack{\ln n^{\frac{2}{n}}} = \frac{1}{4} \exp \cbrack{ \lim_{n \rightarrow \infty} \frac{2 \ln n}{n} } = \frac{1}{4} < 1
+\end{equation}
+og dermed konvergerer rekka.
+
+
+\section*{15.2.5}
+Ser på en rekke
+\begin{equation}
+  \label{eq:23}
+  \sum_{n} a_{n} z^{n}
+\end{equation}
+med konvergensradius $R$ og ser så på
+\begin{equation}
+  \label{eq:24}
+  \sum_{n} a_{n} z^{2n} = \sum
+\end{equation}
+og ved å se på forholdstesten finner vi
+\begin{equation}
+  \label{eq:26}
+  \limtoinf{n} \left| \frac{a_{n+1}}{a_{n}}z^{2} \right| = L z^{2}
+\end{equation}
+ved å anta $L\neq 0$ har vi $L > 0$ og ved forholdstesten har vi konvergens ved
+\begin{equation}
+  \label{eq:27}
+  Lz^{2} < 1 \Rightarrow z < \frac{1}{\sqrt{L}}
+\end{equation}
+ved Cauchy-Hardamard vet vi at
+\begin{equation}
+  \label{eq:28}
+  R = \limtoinf{n} \left| \frac{a_{n}}{a_{n+1}} \right| = \frac{1}{L}
+\end{equation}
+og dermed konvergens for
+\begin{equation}
+  \label{eq:29}
+  z < \sqrt{R}
+\end{equation}
+
+
+\section*{15.2.10}
+Ser rekka
+\begin{equation}
+  \label{eq:30}
+  \sum_{n=0}^{\infty} \frac{(z - 2i)^{n}}{n^{n}}
+\end{equation}
+har sentrum i $z = 2i$ og kan bruke Cauchy-Hardamard
+\begin{equation}
+  \label{eq:31}
+  \left| \frac{(n+1)^{n+1}}{n^{n}} \right| \xrightarrow{n \to \infty} \infty
+\end{equation}
+og har dermed uendelig konvergensradius og rekka konvergerer for alle $z \in \M{C}{}$.
+
+
+\section*{15.2.14}
+Ser på rekka
+\begin{equation}
+  \label{eq:32}
+  \sum_{n=0}^{\infty} \frac{(-1)^{n}}{4^{2n}(n!)^{2}} z^{2n}
+\end{equation}
+ser at sentrum er i $z = 0$ og fra beviset tidligere har vi konvergens i $\sqrt{R}$ dersom $R$ er gitt av Cauchy-Hardamard
+\begin{equation}
+  \label{eq:33}
+  R = \limtoinf{n} \left| \frac{(-1)^{n} 4^{2(n+1)} \bbrack{ (n+1)! }^{2}}{4^{2n}(n!)^{2} (-1)^{n+1}} \right|
+  = \limtoinf{n} 4^{2} \nbrack{ n+1 }^{2} \to \infty
+\end{equation}
+fra Cauchy-Hardamard vil dette gjelde for uendelig store konvergensradiuser for $z^{2n}$ også og vi har dermed en uendelig stor konvergensradius.
 
 
 \end{document}
