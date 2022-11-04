@@ -213,8 +213,17 @@ og
 \end{equation}
 
 \textbf{b)}
-Ser på sjansen for en type 1 feil og har da
-
+Sjansen for å begå en type 1 feil vil være at et binomisk forsøk med $p = 0.15, n = 5$ gir $5$ og har da sjansen for type 1 feil gitt ved
+\begin{equation}
+  \label{eq:32}
+  P(X = 5) = p^{n} = 0.15^{5} = 7.594 \cdot 10^{-5}
+\end{equation}
+og siden $H_{1}$ har $p=1$ så er det ingen mulighet for at utfallet av forsøket ikke er 5 og dermed er sjansen for en type 2 feil lik 0. Ser så på hvor mange deler av DNA-strukturen som må sammenliknes for å få sjansen for en type 1 feil lik $10^{-6}$ som er gitt ved
+\begin{equation}
+  \label{eq:33}
+  10^{-6} = 0.15^{n} \Rightarrow n = \log_{0.15}10^{-6} = 7.282
+\end{equation}
+og ved å runde opp får vi at en må sammenlikne $n = 8$ deler av DNA-strukturen for å få ønsket sannsynlighet for type 1 feil.
 
 
 \section*{Oppg. 4}
@@ -243,13 +252,13 @@ og til slutt fordi $Y$ også er normalfordelt
   \label{eq:28}
   \Prob{Y > 16\cdot 90} = \Prob{\frac{Y-\mu_{Y}}{\sigma_{Y}}\sqrt{n} > \frac{16\cdot 90 - \mu_{Y}}{\sigma_{Y}}\sqrt{n}} = \Prob{Z > 2.22} = 0.013
 \end{equation}
-ved oppslag i tabell. Dersom vi hadde sett bortifra uavhengighet kunne vi ikke brukt regnereglene for varians og forventningsverdi og de tre siste utregningene ville ikke vært rett. Vi trenger så vite sannsynlighetsfordelingen for å finne sannsynlighetene $\Prob{X_{1} > 90}, \Prob{Y > 16\cdot 90}$, men variansen og forventningsverdien er ikke avhengig av dette og disse vil da fortsatt stemme.
+ved oppslag i tabell. Dersom vi hadde sett bortifra uavhengighet kunne vi ikke brukt regnereglene for varians og forventningsverdi og de tre siste utregningene ville ikke vært rett. Vi trenger så vite sannsynlighetsfordelingen for å finne sannsynlighetene $\Prob{X_{1} > 90}, \Prob{Y > 16\cdot 90}$, men variansen og forventningsverdien er ikke avhengig av dette og disse vil da fortsatt stemme. \\
 
 \textbf{b)}
 Ser at vi kan skrive
 \begin{equation}
   \label{eq:29}
-  \overline{x} = \frac{1591}{20}, S^{2} = \frac{1}{19} \sum_{i=1}^{20} \nbrack{ x_{i} - \overline{x} }^{2} = 192.471
+  \overline{x} = \frac{1591}{20} = 79.55, S^{2} = \frac{1}{19} \sum_{i=1}^{20} \nbrack{ x_{i} - \overline{x} }^{2} = 192.471
 \end{equation}
 finner så et $90\%$ konfidensintervall
 \begin{equation}
@@ -265,6 +274,13 @@ og har dermed
   \mu \in \nbrack{74.20, 84.90}
 \end{equation}
 
+\textbf{c)}
+Finner sannsynligheten for at vi har $\sigma^{2} \geq 15^{2}$ og ser på
+\begin{equation}
+  \label{eq:34}
+  \chi^{2} = \frac{(n-1)s^{2}}{\sigma^{2}_{0}} = 6.283
+\end{equation}
+vi må ha $\chi^{2} < \chi_{0.01}^{2} = 36.191$ med 19 frihetsgrader og fra det vi ser stemmer dette og vi kan ikke forkaste $H_{0}$.
 
 
 \end{document}
