@@ -148,27 +148,60 @@ Ser så på
   \label{eq:18}
   f(z) = \frac{z+2}{1-z^{2}} = \frac{z+2}{(1-z)(1+z)}
 \end{equation}
-og kan finne
+og kan finne ved delbrøksoppspaltning
 \begin{equation}
-  \label{eq:19}
-  a_{n} = \frac{1}{2\pi i} \oint_{\mathcal{C}} \frac{f(z^{*})}{(z^{*} - z_{0})^{n+1}}dz^{*}
+  \label{eq:11}
+  \frac{z+2}{(1-z)(1+z)} = \frac{A}{1-z} + \frac{B}{1+z}
 \end{equation}
-og setter $z_{0} = 0$ og definerer
+som gir $A = 3/2, B = 1/2$ og kan dermed skrive
 \begin{equation}
-  \label{eq:20}
-  g(z) = \frac{f(z)}{z^{n+1}}, \;\;\; n \in \M{N}{}
+  \label{eq:12}
+  f(z) = \frac{3}{2} \frac{1}{1-z} + \frac{1}{2} \frac{1}{1+z} = \sum_{n=0}^{\infty} \bbrack{ \frac{3}{2} z^{n} + \frac{1}{2} (-z)^{n} } = \sum_{n=0}^{\infty} \bbrack{ \frac{3}{2} + \frac{(-1)^{n}}{2} }z^{n}
 \end{equation}
-og har dermed en pol av orden $n+1$ i $z = 0$ og to poler av orden 1 i $z=\pm 1$ og kan velge $\mathcal{C}$ slik at den inneholder $z = z_{0} = 0$, men ikke $z = \pm 1$ og kan finne
-\begin{equation}
-  \label{eq:21}
-  \Res{z=0} f(z) =
-\end{equation}
-
 
 
 
 \section*{15.4.8}
+Ser så på
+\begin{equation}
+  \label{eq:13}
+  f(z) = \sin^{2} z
+\end{equation}
+og vet at
+\begin{equation}
+  \label{eq:23}
+  \sin z = \sum_{n=0}^{\infty} \frac{ (-1)^{n} z^{1+2n} }{(1+2n)!}
+\end{equation}
+og dermed har vi
+\begin{equation}
+  \label{eq:24}
+  \sin^{2} z = \sum_{n=0}^{\infty} \frac{z^{2 + 4n}}{\bbrack{ (1+2n)! }^{2}}
+\end{equation}
+
+
 \section*{15.4.23}
+Ser på summen
+\begin{equation}
+  \label{eq:15}
+  f(z) = \frac{1}{(z-i)^{2}}
+\end{equation}
+og vil finne taylorrekka rundt $z_{0} = -i$, og kan bruke
+\begin{equation}
+  \label{eq:19}
+  a_{n} = \frac{f^{(n)}(z_{0})}{n!}
+\end{equation}
+og kan se at vi har
+\begin{equation}
+  \label{eq:20}
+  \frac{d^{n}}{dz^{n}} (z-i)^{-2} = -(n+1)! (z-i)^{-n-2} \Rightarrow f^{(n)}(-i) = \frac{-(n+1)!}{(-2i)^{n+2}}
+\end{equation}
+og har da
+\begin{equation}
+  \label{eq:21}
+  f(z) = -\sum_{n=0}^{\infty} \frac{ (n+1) }{i^{n} \cdot 2^{n+2}} (z + i)^{n}
+\end{equation}
+
+
 \section*{15.4.24}
 \section*{16.1.2}
 \section*{16.1.6}
