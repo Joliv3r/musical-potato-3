@@ -74,17 +74,6 @@ bruker Cauchy-Hardamard og finner konvergensradiusen
   \label{eq:2}
   R = \limtoinf{n} \frac{ n(n-1) \cdot 4^{n+1} }{4^{n} \cdot (n+1)n} = \limtoinf{n} \frac{4n - 4}{n + 1} = 4
 \end{equation}
-kan også finne konvergensradiusen ved å derivere rekken to ganger
-\begin{equation}
-  \label{eq:3}
-  f''(z) = \sum_{n = 2}^{\infty} 4^{-n} \nbrack{z-2i}^{n-2} = \sum_{n=0}^{\infty} 4^{-n+2} \nbrack{z-2i}^{n} = 4^{2} \sum_{n=0}^{\infty} \nbrack{ \frac{z}{4} - \frac{i}{2} }^{n}
-\end{equation}
-dette er en geometrisk rekke og vet at den konvergerer for
-\begin{equation}
-  \label{eq:4}
-  \linebrack{ \frac{z}{4} - \frac{i}{2} } < 1 \Rightarrow \linebrack{ z - 2i } < 4
-\end{equation}
-og har dermed også her konvergensradius $R = 4$.
 
 
 \section*{15.3.8}
@@ -97,11 +86,6 @@ og finner konvergensradius ved Cauchy-Hardamard
 \begin{equation}
   \label{eq:6}
   R = \limtoinf{n} \frac{3^{n} \cdot (n+1)(n+2)}{n(n+1) \cdot 3^{n+1}} = \frac{1}{3} \limtoinf{n} \frac{n+2}{n} = \frac{1}{3}
-\end{equation}
-kan også integrere funksjonen to ganger og får da
-\begin{equation}
-  \label{eq:7}
-  \iint f(z) dz dz = \
 \end{equation}
 
 
@@ -203,9 +187,83 @@ og har da
 
 
 \section*{15.4.24}
+Ser på summen
+\begin{equation}
+  \label{eq:22}
+  e^{z(z-2)}
+\end{equation}
+og finner Maclaurin-rekka med $z_{0} = i/2$, og har da fra likning \eqref{eq:19}
+\begin{equation}
+  \label{eq:26}
+  a_{n} = \frac{\nbrack{ i - 2 }^{n}}{n!} e^{-1/4 - i}
+\end{equation}
+og dermed
+\begin{equation}
+  \label{eq:25}
+  e^{z(z-2)} = \sum_{n=0}^{\infty} \frac{\nbrack{ i-2 }^{n} e^{-1/4 - i}}{n!} \nbrack{ z - \frac{i}{2} }^{n}
+\end{equation}
+
+
 \section*{16.1.2}
+Ser på summen
+\begin{equation}
+  \label{eq:27}
+  f(z) = \frac{\exp\cbrack{ -\frac{1}{z^{2}} }}{z^{2}}
+\end{equation}
+kan se at
+\begin{equation}
+  \label{eq:28}
+  \exp\cbrack{ -\frac{1}{z^{2}} } = \sum_{n=0}^{\infty} \frac{1}{n!} \nbrack{ -\frac{1}{z^{2}} }^{n} = \sum_{n=0}^{-\infty} -\frac{1}{n!} (-1)^{n} z^{2n}
+\end{equation}
+og har dermed
+\begin{equation}
+  \label{eq:29}
+  f(z) = -\sum_{n=0}^{-\infty} \frac{(-1)^{n}}{n!} z^{2n - 2} = -\sum_{n=-1}^{-\infty} \frac{(-1)^{n+1}}{(n+1)!} z^{2n}
+\end{equation}
+ved substitusjonen har vi at rekka konvergerer for alle $|z| > 0$.
+
 \section*{16.1.6}
+Ser på summen
+\begin{equation}
+  \label{eq:33}
+  f(z) = \frac{1}{z^{2}(z-i)} = \frac{A}{z-i} + \frac{B}{z} + \frac{C}{z^{2}}
+\end{equation}
+som gir
+\begin{equation}
+  \label{eq:35}
+  \begin{array}{l}
+    A + B = 0 \\
+    C - iB = 0 \\
+    -iC = 1
+  \end{array}
+\end{equation}
+som da gir $C = i, B = 1, A = -1$ og har da
+\begin{equation}
+  \label{eq:36}
+  f(z) = -\frac{1}{z-i} + \frac{1}{z} + \frac{i}{z^{2}}
+\end{equation}
+
+
 \section*{16.1.13}
+Ser på summen
+\begin{equation}
+  \label{eq:38}
+  f(z) = \frac{z^{8}}{1-z^{4}} = \frac{u^{2}}{1-u} = \left\lbrace
+    \begin{array}{ll}
+      u^{2} \sum_{n=0}^{\infty} u^{n}, & |u| < 1 \\
+      -u^{2} \sum_{n=1}^{\infty} \frac{1}{u^{n}}, & |u| > 1
+    \end{array} \right.
+\end{equation}
+og har dermed rekka
+\begin{equation}
+  \label{eq:39}
+  f(z) = \left\lbrace
+    \begin{array}{ll}
+      z^{8} \sum_{n=0}^{\infty} z^{4n} , & |z| < 1 \\
+      -z^{8} \sum_{n=-1}^{-\infty} z^{4n} , & |z| > 1 \\
+    \end{array}
+    \right.
+\end{equation}
 
 
 
