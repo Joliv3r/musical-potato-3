@@ -1,0 +1,162 @@
+\documentclass{report}
+
+\usepackage{amsfonts, amsmath, amssymb, amsthm}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+
+\newcommand{\M}[2]{\mathbb{#1}^{#2}}
+\newcommand{\twovector}[2]{\left[ \begin{array}{c} #1 \\ #2 \\ \end{array} \right]}
+\newcommand{\threevector}[3]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ \end{array} \right]}
+\newcommand{\fourvector}[4]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ #4 \\ \end{array} \right]}
+\newcommand{\fivevector}[5]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ #4 \\ #5 \\ \end{array} \right]}
+\newcommand{\sixvector}[6]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ #4 \\ #5 \\ #6 \\ \end{array} \right]}
+\newcommand{\sevenvector}[7]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ #4 \\ #5 \\ #6 \\ #7 \\ \end{array} \right]}
+\newcommand{\eightvector}[8]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ #4 \\ #5 \\ #6 \\ #7 \\ #8 \\ \end{array} \right]}
+\newcommand{\ninevector}[9]{\left[ \begin{array}{c} #1 \\ #2 \\ #3 \\ #4 \\ #5 \\ #6 \\ #7 \\ #8 \\ #9 \\ \end{array} \right]}
+\newcommand{\nbrack}[1]{\left( #1 \right)}
+\newcommand{\bbrack}[1]{\left[ #1 \right]}
+\newcommand{\cbrack}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\abrack}[1]{\left< #1 \right>}
+\newcommand{\linebrack}[1]{\left| #1 \right|}
+\newcommand{\twomatrix}[4]{\bbrack{
+    \begin{array}{cc}
+      #1 & #2 \\
+      #3 & #4 \\
+    \end{array}
+  }
+}
+\newcommand{\threematrix}[9]{\bbrack{
+    \begin{array}{ccc}
+      #1 & #2 & #3 \\
+      #4 & #5 & #6 \\
+      #7 & #8 & #9 \\
+    \end{array}
+  }
+}
+\newcommand{\Lplc}[1]{\mathscr{L}\bbrack{ #1 } (s)}
+\newcommand{\iLplc}[1]{\mathscr{L}^{-1}\bbrack{ #1 } (t)}
+\newcommand{\Var}[1]{\text{Var} \bbrack{ #1 }}
+\newcommand{\fvv}[1]{\text{E} \bbrack{ #1 }}
+\newcommand{\Prob}[1]{\text{P} \bbrack{ #1 }}
+
+\title{Innlevering 5}
+\author{Jacob Oliver Bruun}
+\date{\today}
+
+\makeatletter
+\let\inserttitle\@title
+\let\insertauthor\@author
+\makeatother
+
+\pagestyle{fancy}
+\chead{\insertauthor}
+\lhead{\inserttitle}
+\rhead{\today}
+
+\parindent 0ex
+
+\begin{document}
+\section*{Oppg. 1}
+\textbf{a)}
+Har en Poisson-fordeling og definerer da
+\begin{equation}
+  \label{eq:1}
+  L(\mathbf{x}, \lambda_{R}) = f(x_{1}, \lambda_{R}) \cdots f(x_{n}, \lambda_{R})
+\end{equation}
+med
+\begin{equation}
+  \label{eq:2}
+  f(x_{i}, \lambda_{R}) = \frac{\lambda_{R}^{x_{i}}}{x_{i}!} e^{-\lambda_{R}}
+\end{equation}
+og finner så
+\begin{equation}
+  \label{eq:3}
+  \frac{\partial \ln L}{\partial \lambda_{R}} = \frac{\partial}{\partial \lambda_{R}} \cbrack{ \ln \bbrack{ \frac{\lambda_{R}^{\sum_{i=1}^{n} x_{i}}}{\prod_{j=1}^{n}x_{j}!} e^{-n\lambda_{R}} } } = \frac{\partial}{\partial \lambda_{R}} \cbrack{ \ln \lambda_{R} \sum_{i=1}^{n}x_{i} - \ln \prod_{j=1}^{n}x_{j}! - n\lambda_{R}} = \frac{1}{\lambda_{R}} \sum_{i=1}^{n}x_{i} - n
+\end{equation}
+setter vi så likning \eqref{eq:3} lik 0 finner vi
+\begin{equation}
+  \label{eq:4}
+  \hat{\lambda}_{R} = \frac{1}{n} \sum_{i=1}^{n} x_{i}
+\end{equation}
+ser også at $\hat{\lambda}_{R} = \overline{X}$ og har da
+\begin{equation}
+  \label{eq:5}
+  \fvv{\hat{\lambda}_{R}} = \fvv{ \frac{1}{n} \sum_{i=1}^{n} x_{i} } = \frac{1}{n} \fvv{ \sum_{i=1}^{n} x_{i}} = \frac{1}{n} \cdot n\lambda_{R} = \lambda_{R}
+\end{equation}
+og ser så på
+\begin{equation}
+  \label{eq:6}
+  \Var{\hat{\lambda}_{R}} = \Var{\frac{1}{n} \sum_{i=1}^{n} x_{i}} = \frac{1}{n^{2}} \Var{\sum_{i=1}^{n} x_{i}} = \frac{1}{n^{2}} \cdot n\lambda_{R} = \frac{\lambda_{R}}{n}
+\end{equation}
+ved sentralgrenseteoremet er dette normalfordelt. \\
+
+\textbf{b)}
+Setter da opp hypotesene
+\begin{equation}
+  \label{eq:7}
+  H_{0} : \lambda_{R} = 10, \;\;\;\; H_{1} : \lambda_{R} < 10
+\end{equation}
+og kan sette opp ved sentralgrenseteoremet
+\begin{equation}
+  \label{eq:8}
+  T = \frac{\overline{X} - \lambda_{R}}{\sqrt{\Var{X}}} \approx -1.34164
+\end{equation}
+for $H_{0}$ og kan så finne $p$-verdien
+\begin{equation}
+  \label{eq:9}
+  p = \Prob{ T \leq -1.34164 } = 0.0901
+\end{equation}
+og har dermed med $\alpha = 0.05$ at vi ikke forkaster hypotesen. \\
+
+\textbf{c)}
+Antar $\lambda_{R} = 9$ og fortsetter å operere med $\alpha = 0.05$ og vil finne
+\begin{equation}
+  \label{eq:13}
+  F(x) = \sum_{n=0}^{x} f(x) = e^{-9} \sum_{n=0}^{x} \frac{9^{n}}{n!} = 0.9
+\end{equation}
+og finner ved tabell $x = 13$
+\begin{equation}
+  \label{eq:11}
+  p = \Prob{ T \leq -\frac{1}{3}\sqrt{n} } \leq 0.05
+\end{equation}
+og ved å se i tabell trenger vi da
+\begin{equation}
+  \label{eq:12}
+  -\frac{1}{3}\sqrt{n} = -1.65 \Rightarrow
+\end{equation}
+
+
+
+\section*{Oppg. 2}
+Ser på $Y_{i} = ax_{i}(1-x_{i}) + \epsilon_{i}$ for $i = 1, 2, \dots, n$ og har
+\begin{equation}
+  \label{eq:14}
+  \fvv{ Y_{i} | x_{i} } = ax_{i} (1-x_{i}), \;\; \Var{ Y_{i} | x_{i} } = \sigma_{0}^{2} = 0.025^{2}
+\end{equation}
+ser på sannsynlighetsmaksimeringsestimatoren for $a$ og definerer
+\begin{equation}
+  \label{eq:15}
+  L(\mathbf{x}, a) = \prod_{i=1}^{n} \bbrack{ ax_{i} (1-x_{i}) + \epsilon_{i} }
+\end{equation}
+og setter
+\begin{equation}
+  \label{eq:16}
+  \begin{split}
+    0 = \frac{\partial \ln L}{\partial a}
+    &= \frac{\partial}{\partial a} \ln \cbrack{ \prod_{i=1}^{n} \bbrack{ ax_{i} (1-x_{i}) + \epsilon_{i} } } \\
+    &= \frac{\partial}{\partial a} \sum_{i=1}^{n}\ln \bbrack{ ax_{i}(1-x_{i}) + \epsilon_{i} } \\
+    &= \sum_{i=1}^{n} \frac{x_{i}(1-x_{i})}{ax_{i}(1-x_{i}) + \epsilon_{i}} \\
+  \end{split}
+\end{equation}
+og finner så
+\begin{equation}
+  \label{eq:17}
+  0 = \sum_{i=1}^{n} \frac{x_{i}(1-x_{i})Y_{i}}{}
+\end{equation}
+
+
+\end{document}
