@@ -132,31 +132,76 @@ og ved å se i tabell trenger vi da
 
 
 \section*{Oppg. 2}
+\textbf{a)}
 Ser på $Y_{i} = ax_{i}(1-x_{i}) + \epsilon_{i}$ for $i = 1, 2, \dots, n$ og har
 \begin{equation}
   \label{eq:14}
   \fvv{ Y_{i} | x_{i} } = ax_{i} (1-x_{i}), \;\; \Var{ Y_{i} | x_{i} } = \sigma_{0}^{2} = 0.025^{2}
 \end{equation}
-ser på sannsynlighetsmaksimeringsestimatoren for $a$ og definerer
+ser på sannsynlighetsmaksimeringsestimatoren for $a$ og har $Y_{i} \sim N(ax_{i} (1-x_{i}), \sigma^{2})$ og dermed
 \begin{equation}
   \label{eq:15}
-  L(\mathbf{x}, a) = \prod_{i=1}^{n} \bbrack{ ax_{i} (1-x_{i}) + \epsilon_{i} }
+  L(a) = f(\mathbf{y};a) = \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi}\sigma_{0}} \exp\cbrack{ -\frac{ \bbrack{ y_{i} - ax_{i} (1-x_{i}) }^{2} }{ 2\sigma_{0}^{2} } }
 \end{equation}
-og setter
+og har dermed
+\begin{equation}
+  \label{eq:10}
+  \ln L(a) = \sum_{i=1}^{n} \cbrack{ -\ln \sqrt{2\pi} - \ln \sigma_{0} - \frac{\bbrack{ y_{i} - ax_{i}(1-x_{i}) }^{2}}{2\sigma_{0}} }
+\end{equation}
+og videre
 \begin{equation}
   \label{eq:16}
   \begin{split}
-    0 = \frac{\partial \ln L}{\partial a}
-    &= \frac{\partial}{\partial a} \ln \cbrack{ \prod_{i=1}^{n} \bbrack{ ax_{i} (1-x_{i}) + \epsilon_{i} } } \\
-    &= \frac{\partial}{\partial a} \sum_{i=1}^{n}\ln \bbrack{ ax_{i}(1-x_{i}) + \epsilon_{i} } \\
-    &= \sum_{i=1}^{n} \frac{x_{i}(1-x_{i})}{ax_{i}(1-x_{i}) + \epsilon_{i}} \\
+    \partial_{a}\ln L(a) = \frac{1}{\sigma_{0}}\sum_{i=1}^{n} \bbrack{ y_{i} - \hat{a}x_{i}(1-x_{i}) } \bbrack{x_{i}(1-x_{i})} &= 0 \\
+    \sum_{i=1}^{n}\bbrack{x_{i}(1-x_{i})}y_{i} &= \hat{a}\sum_{i=1}^{n} \bbrack{ x_{i} (1-x_{i}) }^{2} \\
+    \hat{a} &= \frac{\sum_{i=1}^{n} x_{i}(1 - x_{i})y_{i} }{ \sum_{i=1}^{n} \bbrack{ x_{i} (1-x_{i}) }^{2} }
   \end{split}
 \end{equation}
-og finner så
+
+\textbf{b)}
+Skriver om
+\begin{equation}
+  \label{eq:18}
+  \hat{a} = \sum_{i=1}^{n}  \frac{x_{i}(1 - x_{i})y_{i} }{ \sum_{j=1}^{n} \bbrack{ x_{j} (1-x_{j}) }^{2} } = \sum_{i=1}^{n} a_{i} y_{i}, \;\;\; a_{i} = \frac{x_{i}(1 - x_{i})}{ \sum_{j=1}^{n} \bbrack{ x_{j} (1-x_{j}) }^{2} }
+\end{equation}
+der $a_{i}$ er en konstant og kan videre se
 \begin{equation}
   \label{eq:17}
-  0 = \sum_{i=1}^{n} \frac{x_{i}(1-x_{i})Y_{i}}{}
+  \fvv{\hat{a}} = \fvv{ \sum_{i=1}^{n} a_{i} y_{i} } = \sum_{i=1}^{n} \fvv{ y_{i} a_{i} } = \sum_{i=1}^{n}ax_{i}(1-x_{i}) a_{i} = a \frac{ \sum_{i=1}^{n} \bbrack{ x_{i}(1-x_{i}) }^{2} }{ \sum_{j=1}^{n} \bbrack{ x_{j}(1-x_{j}) }^{2} } = a
 \end{equation}
+og ser videre på variansen
+\begin{equation}
+  \label{eq:19}
+  \Var{ \hat{a} } = \Var{ \sum_{i=1}^{n} a_{i} y_{i} } = \sum_{i=1}^{n} \Var{ a_{i} y_{i} } = \sum_{i=1}^{n} a_{i}^{2} \sigma_{0}^{2} = \frac{\sigma_{0}^{2} \sum_{i=1}^{n} \bbrack{x_{i}(1 - x_{i})}^{2}}{ \cbrack{ \sum_{j=1}^{n} \bbrack{ x_{j} (1-x_{j}) }^{2} }^{2} } = \frac{\sigma_{0}^{2}}{ \sum_{j=1}^{n} \bbrack{ x_{j}(1-x_{j}) }^{2} }
+\end{equation}
+og ser ikke en sammenheng med en fordeling.
+
+\textbf{c)}
+Setter opp hypotesetesten
+\begin{equation}
+  \label{eq:20}
+  H_{0} : a = 0, \;\;\; H_{1} : a < 0
+\end{equation}
+og kan fra informasjonen sette opp
+\begin{equation}
+  \label{eq:21}
+  T = \frac{\overline{a} - a}{\sqrt{\Var{a}}} = \frac{\overline{a}}{\Var{a}}
+\end{equation}
+og har at
+\begin{equation}
+  \label{eq:22}
+  \begin{split}
+    \overline{a} &= \frac{1}{9} \frac{\sum_{i=1}^{9} x_{i}(1-x_{i})y_{i} }{ \sum_{j=1}^{9} \bbrack{ x_{j} (1-x_{j}) }^{2} } \approx -0.031503 \\
+    \Var{a} &= \frac{\sigma_{0}^{2}}{\sum_{j=1}^{9} \bbrack{ x_{j}(1-x_{j}) }^{2}} \approx 0.0018752
+  \end{split}
+\end{equation}
+og kan sette opp
+\begin{equation}
+  \label{eq:23}
+  p = \Prob{ T \leq \frac{\overline{a}}{\sqrt{\Var{a}}} = -0.7275 } = 0.2327
+\end{equation}
+og kan dermed ikke forkaste hypotesen med signifikansnivå.
+
 
 
 \end{document}
