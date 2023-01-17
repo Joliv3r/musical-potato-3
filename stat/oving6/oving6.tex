@@ -80,17 +80,17 @@ og finner så
 setter vi så likning \eqref{eq:3} lik 0 finner vi
 \begin{equation}
   \label{eq:4}
-  \hat{\lambda}_{R} = \frac{1}{n} \sum_{i=1}^{n} x_{i}
+  \widehat{\lambda}_{R} = \frac{1}{n} \sum_{i=1}^{n} x_{i}
 \end{equation}
-ser også at $\hat{\lambda}_{R} = \overline{X}$ og har da
+ser også at $\widehat{\lambda}_{R} = \overline{X}$ og har da
 \begin{equation}
   \label{eq:5}
-  \fvv{\hat{\lambda}_{R}} = \fvv{ \frac{1}{n} \sum_{i=1}^{n} x_{i} } = \frac{1}{n} \fvv{ \sum_{i=1}^{n} x_{i}} = \frac{1}{n} \cdot n\lambda_{R} = \lambda_{R}
+  \fvv{\widehat{\lambda}_{R}} = \fvv{ \frac{1}{n} \sum_{i=1}^{n} x_{i} } = \frac{1}{n} \fvv{ \sum_{i=1}^{n} x_{i}} = \frac{1}{n} \cdot n\lambda_{R} = \lambda_{R}
 \end{equation}
 og ser så på
 \begin{equation}
   \label{eq:6}
-  \Var{\hat{\lambda}_{R}} = \Var{\frac{1}{n} \sum_{i=1}^{n} x_{i}} = \frac{1}{n^{2}} \Var{\sum_{i=1}^{n} x_{i}} = \frac{1}{n^{2}} \cdot n\lambda_{R} = \frac{\lambda_{R}}{n}
+  \Var{\widehat{\lambda}_{R}} = \Var{\frac{1}{n} \sum_{i=1}^{n} x_{i}} = \frac{1}{n^{2}} \Var{\sum_{i=1}^{n} x_{i}} = \frac{1}{n^{2}} \cdot n\lambda_{R} = \frac{\lambda_{R}}{n}
 \end{equation}
 ved sentralgrenseteoremet er dette normalfordelt. \\
 
@@ -103,33 +103,26 @@ Setter da opp hypotesene
 og kan sette opp ved sentralgrenseteoremet
 \begin{equation}
   \label{eq:8}
-  T = \frac{\overline{X} - \lambda_{R}}{\sqrt{\Var{X}}} \approx -1.34164
+  Z = \frac{\widehat{\lambda}_{R} - \lambda_{R}}{\sqrt{\frac{\lambda_{R}}{n}}} \approx -1.34164
 \end{equation}
 for $H_{0}$ og kan så finne $p$-verdien
 \begin{equation}
   \label{eq:9}
-  p = \Prob{ T \leq -1.34164 } = 0.0901
+  p = \Prob{ Z \leq -1.34164 } = 0.0901
 \end{equation}
 og har dermed med $\alpha = 0.05$ at vi ikke forkaster hypotesen. \\
 
 \textbf{c)}
-Antar $\lambda_{R} = 9$ og fortsetter å operere med $\alpha = 0.05$ og vil finne
+Antar $\lambda_{R} = 9$ og fortsetter å operere med $\alpha = 0.05$ og vil da finne
 \begin{equation}
-  \label{eq:13}
-  F(x) = \sum_{n=0}^{x} f(x) = e^{-9} \sum_{n=0}^{x} \frac{9^{n}}{n!} = 0.9
+  \label{eq:48}
+  \Prob{ \text{forkast } H_{0} | \lambda_{R} = 9} = 0.9 \Rightarrow \Prob{ p < 0.05 | \lambda_{R} = 9} = 0.9
 \end{equation}
-og finner ved tabell $x = 13$
+som da gir $Z \leq -2.58$ og siden vi har
 \begin{equation}
-  \label{eq:11}
-  p = \Prob{ T \leq -\frac{1}{3}\sqrt{n} } \leq 0.05
+  \label{eq:50}
+  \widehat{\lambda}_{R} = -2.58\sqrt{\frac{10}{n}} + 10
 \end{equation}
-og ved å se i tabell trenger vi da
-\begin{equation}
-  \label{eq:12}
-  -\frac{1}{3}\sqrt{n} = -1.65 \Rightarrow
-\end{equation}
-
-
 
 \section*{Oppg. 2}
 \textbf{a)}
@@ -152,9 +145,9 @@ og videre
 \begin{equation}
   \label{eq:16}
   \begin{split}
-    \partial_{a}\ln L(a) = \frac{1}{\sigma_{0}}\sum_{i=1}^{n} \bbrack{ y_{i} - \hat{a}x_{i}(1-x_{i}) } \bbrack{x_{i}(1-x_{i})} &= 0 \\
-    \sum_{i=1}^{n}\bbrack{x_{i}(1-x_{i})}y_{i} &= \hat{a}\sum_{i=1}^{n} \bbrack{ x_{i} (1-x_{i}) }^{2} \\
-    \hat{a} &= \frac{\sum_{i=1}^{n} x_{i}(1 - x_{i})y_{i} }{ \sum_{i=1}^{n} \bbrack{ x_{i} (1-x_{i}) }^{2} }
+    \partial_{a}\ln L(a) = \frac{1}{\sigma_{0}}\sum_{i=1}^{n} \bbrack{ y_{i} - \widehat{a}x_{i}(1-x_{i}) } \bbrack{x_{i}(1-x_{i})} &= 0 \\
+    \sum_{i=1}^{n}\bbrack{x_{i}(1-x_{i})}y_{i} &= \widehat{a}\sum_{i=1}^{n} \bbrack{ x_{i} (1-x_{i}) }^{2} \\
+    \widehat{a} &= \frac{\sum_{i=1}^{n} x_{i}(1 - x_{i})y_{i} }{ \sum_{i=1}^{n} \bbrack{ x_{i} (1-x_{i}) }^{2} }
   \end{split}
 \end{equation}
 
@@ -162,46 +155,135 @@ og videre
 Skriver om
 \begin{equation}
   \label{eq:18}
-  \hat{a} = \sum_{i=1}^{n}  \frac{x_{i}(1 - x_{i})y_{i} }{ \sum_{j=1}^{n} \bbrack{ x_{j} (1-x_{j}) }^{2} } = \sum_{i=1}^{n} a_{i} y_{i}, \;\;\; a_{i} = \frac{x_{i}(1 - x_{i})}{ \sum_{j=1}^{n} \bbrack{ x_{j} (1-x_{j}) }^{2} }
+  \widehat{a} = \sum_{i=1}^{n}  \frac{x_{i}(1 - x_{i})y_{i} }{ \sum_{j=1}^{n} \bbrack{ x_{j} (1-x_{j}) }^{2} } = \sum_{i=1}^{n} a_{i} y_{i}, \;\;\; a_{i} = \frac{x_{i}(1 - x_{i})}{ \sum_{j=1}^{n} \bbrack{ x_{j} (1-x_{j}) }^{2} }
 \end{equation}
 der $a_{i}$ er en konstant og kan videre se
 \begin{equation}
   \label{eq:17}
-  \fvv{\hat{a}} = \fvv{ \sum_{i=1}^{n} a_{i} y_{i} } = \sum_{i=1}^{n} \fvv{ y_{i} a_{i} } = \sum_{i=1}^{n}ax_{i}(1-x_{i}) a_{i} = a \frac{ \sum_{i=1}^{n} \bbrack{ x_{i}(1-x_{i}) }^{2} }{ \sum_{j=1}^{n} \bbrack{ x_{j}(1-x_{j}) }^{2} } = a
+  \fvv{\widehat{a}} = \fvv{ \sum_{i=1}^{n} a_{i} y_{i} } = \sum_{i=1}^{n} \fvv{ y_{i} a_{i} } = \sum_{i=1}^{n}ax_{i}(1-x_{i}) a_{i} = a \frac{ \sum_{i=1}^{n} \bbrack{ x_{i}(1-x_{i}) }^{2} }{ \sum_{j=1}^{n} \bbrack{ x_{j}(1-x_{j}) }^{2} } = a
 \end{equation}
 og ser videre på variansen
 \begin{equation}
   \label{eq:19}
-  \Var{ \hat{a} } = \Var{ \sum_{i=1}^{n} a_{i} y_{i} } = \sum_{i=1}^{n} \Var{ a_{i} y_{i} } = \sum_{i=1}^{n} a_{i}^{2} \sigma_{0}^{2} = \frac{\sigma_{0}^{2} \sum_{i=1}^{n} \bbrack{x_{i}(1 - x_{i})}^{2}}{ \cbrack{ \sum_{j=1}^{n} \bbrack{ x_{j} (1-x_{j}) }^{2} }^{2} } = \frac{\sigma_{0}^{2}}{ \sum_{j=1}^{n} \bbrack{ x_{j}(1-x_{j}) }^{2} }
+  \Var{ \widehat{a} } = \Var{ \sum_{i=1}^{n} a_{i} y_{i} } = \sum_{i=1}^{n} \Var{ a_{i} y_{i} } = \sum_{i=1}^{n} a_{i}^{2} \sigma_{0}^{2} = \frac{\sigma_{0}^{2} \sum_{i=1}^{n} \bbrack{x_{i}(1 - x_{i})}^{2}}{ \cbrack{ \sum_{j=1}^{n} \bbrack{ x_{j} (1-x_{j}) }^{2} }^{2} } = \frac{\sigma_{0}^{2}}{ \sum_{j=1}^{n} \bbrack{ x_{j}(1-x_{j}) }^{2} }
 \end{equation}
-og ser ikke en sammenheng med en fordeling.
+og kan se at $\widehat{a}$ er normalfordelt da det er en lineærkombinasjon av uavhengige normalfordelinger. \\
 
 \textbf{c)}
 Setter opp hypotesetesten
 \begin{equation}
   \label{eq:20}
-  H_{0} : a = 0, \;\;\; H_{1} : a < 0
+  H_{0} : a = 0, \;\;\; H_{1} : a \neq 0
 \end{equation}
 og kan fra informasjonen sette opp
 \begin{equation}
   \label{eq:21}
-  T = \frac{\overline{a} - a}{\sqrt{\Var{a}}} = \frac{\overline{a}}{\Var{a}}
+  Z = \frac{\widehat{a} - a}{\sqrt{\Var{a}}} \Rightarrow Z_{0} = \frac{\widehat{a}}{\sqrt{\Var{a}}}
 \end{equation}
 og har at
 \begin{equation}
   \label{eq:22}
   \begin{split}
-    \overline{a} &= \frac{1}{9} \frac{\sum_{i=1}^{9} x_{i}(1-x_{i})y_{i} }{ \sum_{j=1}^{9} \bbrack{ x_{j} (1-x_{j}) }^{2} } \approx -0.031503 \\
+    \widehat{a} &= \frac{\sum_{i=1}^{9} x_{i}(1-x_{i})y_{i} }{ \sum_{j=1}^{9} \bbrack{ x_{j} (1-x_{j}) }^{2} } \approx -0.283528 \\
     \Var{a} &= \frac{\sigma_{0}^{2}}{\sum_{j=1}^{9} \bbrack{ x_{j}(1-x_{j}) }^{2}} \approx 0.0018752
   \end{split}
 \end{equation}
-og kan sette opp
+og med $z_{\alpha / 2} = 1.960$
+\begin{equation}
+  \label{eq:24}
+  Z_{0} = -6.54746 < -z_{\alpha / 2}
+\end{equation}
+og må dermed forkaste hypotesen.
+
+
+\section*{Oppg. 3}
+\textbf{a)}
+Har den stokastiske variablen $Y_{i} = \beta x_{i} + \epsilon_{i}$ med $\epsilon_{i} \sim N(0, \sigma^{2})$ og kan se på differansen
+\begin{equation}
+  \label{eq:25}
+  \delta = \sum_{i=1}^{n} (y_{i} - \widehat{\beta} x_{i})^{2}
+\end{equation}
+og vil finne $\widehat{\beta}$ slik at $\alpha$ blir minst mulig, og ser da på
 \begin{equation}
   \label{eq:23}
-  p = \Prob{ T \leq \frac{\overline{a}}{\sqrt{\Var{a}}} = -0.7275 } = 0.2327
+  \begin{split}
+    \partial_{\beta} \delta = -2 \sum_{i=1}^{n} x_{i}(y_{i} - \widehat{\beta}x_{i}) = 0 \Rightarrow \sum_{i=1}^{n} x_{i} y_{i} = \widehat{\beta} \sum_{i=1}^{n} x_{i}^{2}
+  \end{split}
 \end{equation}
-og kan dermed ikke forkaste hypotesen med signifikansnivå.
+og har dermed
+\begin{equation}
+  \label{eq:26}
+  \widehat{\beta} = \frac{\sum_{i=1}^{11} x_{i}y_{i}}{\sum_{i=1}^{11}x_{i}^{2}}
+\end{equation}
+og ved å sette inn verdier får vi
+\begin{equation}
+  \label{eq:27}
+  \beta = 0.0567
+\end{equation}
+ser videre også at
+\begin{equation}
+  \label{eq:28}
+  \fvv{ \widehat{\beta} } = \fvv{ \frac{\sum_{i=1}^{n}x_{i}y_{i}}{\sum_{i=1}^{n}x_{i}^{2}} }
+  = \frac{1}{\sum_{i=1}^{n}x_{i}^{2}} \sum_{i=1}^{n} \fvv{ x_{i} y_{i} }
+  =  \frac{1}{\sum_{i=1}^{n}x_{i}^{2}} \sum_{i=1}^{n} x_{i} \fvv{y_{i}}
+\end{equation}
+og kan se at
+\begin{equation}
+  \label{eq:30}
+  \fvv{ y_{i} } = \fvv{ \beta x_{i} } + \fvv{ \epsilon_{i} } = \beta x_{i}
+\end{equation}
+og kan dermed se
+\begin{equation}
+  \label{eq:31}
+  \fvv{\widehat{\beta}} = \frac{\beta \sum_{i=1}^{n} x_{i}^{2}}{\sum_{i=1}^{n} x_{i}^{2}} = \beta
+\end{equation}
+ser videre
+\begin{equation}
+  \label{eq:32}
+  \Var{\widehat{\beta}} = \frac{1}{\bbrack{\sum_{i=1}^{n} x_{i}^{2}}^{2}} \sum_{i=1}^{n} x_{i}^{2} \Var{y_{i}}
+\end{equation}
+og kan se at
+\begin{equation}
+  \label{eq:33}
+  \Var{y_{i}} = \Var{\beta x_{i}} + \Var{\epsilon_{i}} = \sigma^{2}
+\end{equation}
+og dermed
+\begin{equation}
+  \label{eq:34}
+  \Var{\widehat{\beta}} = \frac{\sigma^{2} \sum_{i=1}^{n} x_{i}^{2}}{\bbrack{\sum_{i=1}^{n} x_{i}^{2}}^{2}} = \frac{\sigma^{2}}{\sum_{i=1}^{n}x_{i}^{2}}
+\end{equation}
 
+\textbf{b)}
+Ser først at
+\begin{equation}
+  \label{eq:52}
+  y_{0} = \widehat{\beta}x_{0} = 51.03
+\end{equation}
+ser så på $Y_{0}-\widehat{Y}_{0}$ som er normalfordelt og har også $\fvv{ Y_{0} - \widehat{Y}_{0} } = 0$ og
+\begin{equation}
+  \label{eq:53}
+  \Var{ Y_{0} - \widehat{Y}_{0} } = \Var{Y_{0}} + \Var{\widehat{\beta}x_{0}} = \sigma^{2} \nbrack{ 1 + \frac{x_{0}^{2}}{\sum_{i=1}^{n} x_{i}^{2}} }
+\end{equation}
+og kan se på standardiseringen
+\begin{equation}
+  \label{eq:54}
+  Z = \frac{Y_{0} - \widehat{Y}_{0}}{\sqrt{ \sigma^{2}\nbrack{ 1 + \frac{x_{0}^{2}}{\sum_{i=1}^{n} x_{i}^{2}} } }} \sim N(0,1)
+\end{equation}
+men siden vi ikke kjenner $\sigma^{2}$ kan vi heller bruke
+\begin{equation}
+  \label{eq:55}
+  T = \frac{Y_{0} - \widehat{Y}_{0}}{\sqrt{ S^{2}\nbrack{ 1 + \frac{x_{0}^{2}}{ \sum_{i=1}^{n} x_{i}^{2} } } }} \sim t_{n-1}, \;\;\; S^{2} = \frac{1}{n-1} \sum_{i=1}^{n} (y_{i} - \widehat{y}_{i})^{2}
+\end{equation}
+og kan dermed finne intervallet slik at
+\begin{equation}
+  \label{eq:56}
+  \Prob{ -t_{n-1, \alpha/2} \leq T \leq t_{n-1, \alpha/2} } = 0.95
+\end{equation}
+med $\alpha = 0.05$ kan vi finne prediksjonsintervallet
+\begin{equation}
+  \label{eq:57}
+  Y_{0} \in \bbrack{ \widehat{Y}_{0} - t_{10, 0.025} \sqrt{ S^{2} \nbrack{ 1 + \frac{x_{0}^{2}}{ \sum_{i=1}^{n} x_{i}^{2} } } }, \widehat{Y}_{0} + t_{10, 0.025} \sqrt{ S^{2} \nbrack{ 1 + \frac{x_{0}^{2}}{ \sum_{i=1}^{n} x_{i}^{2} } } } } = \bbrack{ 48.50, 53.56 }
+\end{equation}
 
 
 \end{document}
