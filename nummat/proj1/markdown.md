@@ -128,4 +128,34 @@ $$
 e^{2\pi ik\cdot} = \cos (2\pi k\cdot ) + i\sin (2\pi k\cdot)
 $$
 
+
+### d)
+
+Let $f \in \mathcal{S}_n$, using $\mathcal{B}$ as a basis, we have that
+
+$$
+f(x) = \frac{a_0}{2} + a_1\cos(2\pi x) + \dots + a_n\cos(2\pi nx) + b_1\sqrt{2} \sin(2\pi) + \dots + b_n\sqrt{2} \sin(2\pi nx).
+$$
+
+We know that the inner product is additive and we only need to prove that
+
+$$
+a_k = 2\left< a_k \cos(2\pi k\cdot), \cos(2\pi k\cdot) \right>, \; b_k = 2\left< b_k \sin(2\pi k\cdot), \sin(2\pi k\cdot) \right>.
+$$
+
+Further we can see that for $k \neq 0$
+
+$$
+2\left< a_k \cos(2\pi k \cdot), \cos(2\pi k \cdot) \right> = a_k \left< \sqrt{2} \cos(2\pi k \cdot), \sqrt{2} \cos(2\pi k \cdot) \right>
+$$
+
+and trivially the same for $b_k$. Now consider $k = 0$, where we have assumed that the constant takes the form $a_0/2$
+
+$$
+2\left< \frac{a_0}{2}, 1 \right> = \frac{a_0}{2} \left< \sqrt{2}, \sqrt{2} \right> = \frac{a_0}{2}.
+$$
+
+Thus we have proven that these are the Fourier coefficients.
+
+
 b
