@@ -196,6 +196,42 @@ $$
 since each term has a $\pi$ difference in the exponent they sum to 0. Now consider $N = 2h-1$ for any $h\in\mathbb{Z}$. 
 
 
+
+### g)
+
+We now construct a matrix where $\hat{\bm{f}} = \frac{1}{N} \mathcal{F}_N \bm{f}$ with $\mathcal{F} \in\mathbb{C}^{N\times N}$ given by
+
+$$
+\mathcal{F}_N = \left( e^{2\pi ikl/N} \right)_{k,l=0}^{N-1}.
+$$
+
+Now we introdce the cirulant matrix. Let $\bm{a} = (a_0, \dots , a_{N-1})^T $ we then have
+
+$$
+\text{circ } \bm{a} = \left( a_{k-l \mod N} \right)_{k,l=0}^{N-1} = 
+\begin{pmatrix}
+    a_0 & a_{N-1} & \dots & a_2 & a_1 \\
+    a_1 & a_0 & \dots & a_3 & a_2 \\
+    \vdots & & \ddots & & \vdots \\
+    a_{N-1} & a_{N-2} & \dots & a_1 & a_0 \\
+\end{pmatrix}.
+$$
+
+We will show that
+
+$$
+\text{circ } \bm{a} = \frac{1}{N} \overline{\mathcal{F}_N} \text{diag}(\hat{\bm{a}}) \mathcal{F}_N.
+$$
+
+We consider the $kl$-th entry and we find that
+
+$$
+\frac{1}{N} e^{2\pi ikl/N} \left( \sum_{r=0}^{N-1} e^{-2\pi ikr/N} a_r \right) e^{-2\pi ikl/N}
+$$
+
+
+
+
 b
 
 b
