@@ -1,4 +1,4 @@
-## Task 1
+## Task 1: The (Discrete) Fourier Transform
 
 ### a)
 
@@ -229,6 +229,24 @@ $$
 \frac{1}{N} e^{2\pi ikl/N} \left( \sum_{r=0}^{N-1} e^{-2\pi ikr/N} a_r \right) e^{-2\pi ikl/N}
 $$
 
+
+
+## Task 2: Signal Processing
+
+
+### a)
+
+We define a cyclic convolution of $\bm{a}, \bm{b} \in \mathbb{R}^N$ entrywise for all $j = 0, \dots , N-1$ by
+
+$$
+(\bm{a} * \bm{b})_j = \sum_{k=0}^{N-1} a_k b_{j-k \mod N}.
+$$
+
+Consider a shift such that $\bm{b}' = (b_{N-1}, b_0, \dots , b_{N-2})$. We can then find
+
+$$
+c'_j = (a * b')_j = \sum_{k=0}^{N-1} a_k b_{j-k-1 \mod N}
+$$
 
 
 
