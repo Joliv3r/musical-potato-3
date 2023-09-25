@@ -158,4 +158,49 @@ $$
 Thus we have proven that these are the Fourier coefficients.
 
 
+### e)
+
+We have equidistant points $x_0,\dots, x_{N-1}, \; x_j = j/N, \; j=0,\dots, N,\;\; N\in\mathbb{N}$, that we want to use to approximate $c_k (f)$. The composite trapezoidal rule states that
+
+$$
+\int_a^b f(x) \approx
+\frac{\Delta x_k}{2} \left( f_0 + 2 \sum_{j=1}^{N-1} f_j e^{2\pi ikx_j} + f_N \right)
+$$
+
+Using the definition of $c_k$ and we know that $f_0 = f_N$ by our initial assumption, we fund that
+
+$$
+c_k(f) = \left< f, e^{2\pi ik\cdot} \right>
+= \int_{0}^{1} f(x) e^{-2\pi ikx} dx
+\approx \Delta x_k \sum_{j=1}^{N-1} f_j e^{-2\pi ikx_j} = \frac{1}{N} \sum_{j=1}^{N-1} f_j e^{-2\pi ijk/N}
+$$
+
+and we hve our desired result. We know that $e^x$ is $2\pi$-periodic, thus $e^{2\pi ijk/N}$ must be $N$-periodic, and one of our initial assumptions was that $f$ is periodic over its interval, thus $f$ is also $N$-periodic and $\hat{f}$ must be $N$-periodic.
+
+
+
+### f)
+
+Now let $N\in \mathbb{N}, k \in \mathbb{Z}$. We consider
+
+$$
+\frac{1}{N} \sum_{j=0}^{N-1} e^{-2\pi ijk/N}.
+$$
+
+as we know $e^{2\pi ih} = 1$ for $h \in\mathbb{Z}$. If $k \equiv 0 \mod N$ we have that $k/N \in \mathbb{Z}$ and the sum equals $N$ and $\hat{f}_k = 1$. In the opposite case when $k \not\equiv 0 \mod N$ we first assume $N = 2h$ for any $h\in \mathbb{N}$, then we can write the sum
+
+$$
+\sum_{j=0}^{N-1} e^{-2\pi ijk/N} = \sum_{j=0}^{h-1} \left( e^{-2\pi ijk/N} + e^{-2\pi ij(h+k)/N} \right) = 0
+$$
+
+since each term has a $\pi$ difference in the exponent they sum to 0. Now consider $N = 2h-1$ for any $h\in\mathbb{Z}$. 
+
+
 b
+
+b
+b
+b
+bb
+b
+bb
