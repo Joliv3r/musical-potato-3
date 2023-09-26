@@ -230,6 +230,23 @@ $$
 $$
 
 
+### i)
+
+
+As we are looking at the function
+
+$$
+f_2(x) = \sin (32\pi x) + \cos (128\pi x)
+$$
+
+we can easily see that $a_{128} = 1, b_{32} = 1$ and all oher coefficients are 0. We can use that $c_k = (a_k - ib_k)/2, \; k > 0$ and $c_k = (a_{-k} + ib_{-k})/2, \; k < 0$. We then find
+
+$$
+c_{-128} = \frac{1}{2}, \; c_{128} = \frac{1}{2}, \; c_{-32} = \frac{i}{2}, \; c_{32} = -\frac{i}{2}.
+$$
+
+
+
 
 ## Task 2: Signal Processing
 
