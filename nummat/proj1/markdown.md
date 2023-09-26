@@ -239,14 +239,46 @@ $$
 We define a cyclic convolution of $\bm{a}, \bm{b} \in \mathbb{R}^N$ entrywise for all $j = 0, \dots , N-1$ by
 
 $$
-(\bm{a} * \bm{b})_j = \sum_{k=0}^{N-1} a_k b_{j-k \mod N}.
+c_j = (\bm{a} * \bm{b})_j = \sum_{k=0}^{N-1} a_k b_{j-k \mod N}.
 $$
 
 Consider a shift such that $\bm{b}' = (b_{N-1}, b_0, \dots , b_{N-2})$. We can then find
 
 $$
-c'_j = (a * b')_j = \sum_{k=0}^{N-1} a_k b_{j-k-1 \mod N}
+c'_j = (\bm{a} * \bm{b}')_j = \sum_{k=0}^{N-1} a_k b_{j-k-1 \mod N} = c_{j-1 \mod N}.
 $$
+
+
+### b)
+
+Consider $f,g \in L_1(\mathbb{T})$ and for any $k\in \mathbb{Z}$ we will show that
+
+$$
+c_k (f*g) = c_k (f) c_k (g).
+$$
+
+From the definition of the Fouier coefficients we can write that
+
+$$
+\begin{split}
+c_k (f*g) &= \int_0^1 (f*g)(x) e^{-2\pi ikx}dx \\
+&= \int_0^1 \left( \int_0^1 f(y) g(x-y)dy \right) e^{-2\pi ikx}dx \\
+&= \int_0^1 \left( \int_0^1 g(x-y)e^{-2\pi ikx} dx \right) f(y) dy .
+\end{split}
+$$
+
+Since $g$ is periodic we can write $g(x-y) = g(x) e^{-2\pi iky}$, and we find that
+
+$$
+c_k(f*g) = c_k(g) c_k(f).
+$$
+
+Further for any signal we want to show that
+
+$$
+\widehat{( \bm{a} * \bm{b} )} = \hat{\bm{a}} \circ \hat{\bm{b}}.
+$$
+
 
 
 
