@@ -223,11 +223,32 @@ $$
 \text{circ } \bm{a} = \frac{1}{N} \overline{\mathcal{F}_N} \text{diag}(\hat{\bm{a}}) \mathcal{F}_N.
 $$
 
-We consider the $kl$-th entry and we find that
+We consider the $k$-th entry and using $w = e^{-2\pi i/N}$, we find that
 
 $$
-\frac{1}{N} e^{2\pi ikl/N} \left( \sum_{r=0}^{N-1} e^{-2\pi ikr/N} a_r \right) e^{-2\pi ikl/N}
+\begin{split}
+\hat{a}_k &= \left[ \mathcal{F}_N \bm{a} \right]_k = \sum_{r=0}^{N-1} a_r w^{kr} \\
+\left[ \text{diag }\hat{\bm{a}} F_N \right]_{kl} &= \hat{a}_k w^{kl} = w^{kl} \sum_{r=0}^{N-1} a_r w^{kr} \\
+\left[ \overline{\mathcal{F}}_N \text{diag }\hat{\bm{a}} \mathcal{F}_N \right]_{kl}
+&= \sum_{r=0}^{N-1} w^{-kr} w^{rl} \sum_{j=0}^{N-1} a_j w^{rj}
+= \sum_{j=0}^{N-1} a_j \sum_{r=0}^{N-1} w^{r(j+l-k)}.
+\end{split}
 $$
+
+For the last sum to be nonzero we must have $j+l-k \equiv 0 \mod N$ by our previous result. Thus $j \equiv k-l \mod N$ and for this $a_j$ sums $N$ times, we can therefore conclude that
+
+$$
+\frac{1}{N} \overline{\mathcal{F}}_N \text{diag }\hat{\bm{a}} \mathcal{F}_N
+= \left( a_{j \equiv k-l \mod N} \right)_{k,l=0}^{N-1} = \text{circ } \bm{a}.
+$$
+
+Now consider the $kl$-th element, we can see that
+
+$$
+\left[ \overline{\mathcal{F}}_N \mathcal{F}_N \right] _{kl} = \sum_{j=0}^{N-1} w^{(k-l)j}
+$$
+
+which is 1 only for $k-l = 0$. Similar logic holds the other way also, thus $\overline{\mathcal{F}} = \mathcal{F}^{-1}$. We can also from this conclude that the Fourier function does ineed diagonalise $\text{circ } \bm{a}$.
 
 
 ### i)
@@ -295,6 +316,14 @@ Further for any signal we want to show that
 $$
 \widehat{( \bm{a} * \bm{b} )} = \hat{\bm{a}} \circ \hat{\bm{b}}.
 $$
+
+We consider the $j$-th element
+
+$$
+\widehat{(\bm{a} * \bm{b})}_j = \frac{1}{N}  \sum_{k=0}^{N-1} w^{jk} a_k b_{j-k \mod N}
+$$
+
+thus we have
 
 
 
