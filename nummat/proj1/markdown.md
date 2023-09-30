@@ -40,7 +40,6 @@ $$
 0 & , \text{else}.
 \end{array}
 \right.
-\;\;\;\;\;\;\; \square
 $$
 
 ### b)
@@ -100,7 +99,7 @@ Thus we have proven that this is an orthonormal system.
 
 ### c)
 
-Consider these two spaces
+Consider the two spaces
 
 $$
 \mathcal{T}_n = \text{span} \left\lbrace e^{-2\pi in \cdot}, \dots , e^{2\pi in \cdot} \right\rbrace = \left\lbrace f \;\Bigg|\; f(x) = \sum_{k=-n}^n c_k e^{2\pi ikx}, \text{where } c_{-n}, c_{-n+1}, \dots , c_n \in \mathbb{C} \right\rbrace .
@@ -125,8 +124,14 @@ $$
 is an orthonormal basis for $\mathcal{S}_n$. Now consider
 
 $$
-e^{2\pi ik\cdot} = \cos (2\pi k\cdot ) + i\sin (2\pi k\cdot)
+\begin{split}
+e^{2\pi ik\cdot} &= \cos (2\pi k\cdot ) + i\sin (2\pi k\cdot) \\
+e^{-2\pi ik\cdot} &= \cos (2\pi k\cdot ) - i\sin (2\pi k\cdot).
+\end{split}
 $$
+
+From this we can see that $c_{-k} = \overline{c_k}$, and we can trivially see that every $f\in \mathcal{S}_n$ is also in $\mathcal{T}_n$ and opposite. Thus $\mathcal{T}_n = \mathcal{S}_n$.
+
 
 
 ### d)
@@ -180,20 +185,26 @@ and we hve our desired result. We know that $e^x$ is $2\pi$-periodic, thus $e^{2
 
 
 ### f)
-
+     
 Now let $N\in \mathbb{N}, k \in \mathbb{Z}$. We consider
 
 $$
 \frac{1}{N} \sum_{j=0}^{N-1} e^{-2\pi ijk/N}.
 $$
 
-as we know $e^{2\pi ih} = 1$ for $h \in\mathbb{Z}$. If $k \equiv 0 \mod N$ we have that $k/N \in \mathbb{Z}$ and the sum equals $N$ and $\hat{f}_k = 1$. In the opposite case when $k \not\equiv 0 \mod N$ we first assume $N = 2h$ for any $h\in \mathbb{N}$, then we can write the sum
+as we know $e^{2\pi ih} = 1$ for $h \in\mathbb{Z}$. If $k \equiv 0 \mod N$ we have that $k/N \in \mathbb{Z}$ and the sum equals $N$ and $\hat{f}_k = 1$. In the opposite case when $k \not\equiv 0 \mod N$ we first assume $N = 2h+1$ for any $h\in \mathbb{N}$, then we can write the sum
 
 $$
-\sum_{j=0}^{N-1} e^{-2\pi ijk/N} = \sum_{j=0}^{h-1} \left( e^{-2\pi ijk/N} + e^{-2\pi ij(h+k)/N} \right) = 0
+\sum_{j=0}^{N-1} e^{-2\pi ijk/N} = \sum_{j=0}^{h} \left( e^{-2\pi ijk/N} + e^{-2\pi ij(h+k)/N} \right) = 0
 $$
 
-since each term has a $\pi$ difference in the exponent they sum to 0. Now consider $N = 2h-1$ for any $h\in\mathbb{Z}$. 
+since each term has a $\pi$ difference in the exponent they sum to 0. Now consider $N = 2h$ for any $h\in\mathbb{Z}$
+
+$$
+\sum_{j=0}^{N-1} e^{-2\pi ijk/N} = 1 + \sum_{j=1}^{h-1} \left( e^{-\pi ijk/h} + e^{\pi ijk/h} \right) = 1 + \sum_{j=0}^{N-1}
+$$
+
+since $jk\in \mathbb{Z}$ we have that 
 
 
 
@@ -260,18 +271,17 @@ $$
 f_2(x) = \sin (32\pi x) + \cos (128\pi x)
 $$
 
-we can easily see that $a_{128} = 1, b_{32} = 1$ and all oher coefficients are 0. We can use that $c_k = (a_k - ib_k)/2, \; k > 0$ and $c_k = (a_{-k} + ib_{-k})/2, \; k < 0$. We then find
+we can easily see that $a_{128} = 1, b_{32} = 1$ and all oher coefficients are 0, as this represents the function exactly. We can use that $c_k = (a_k - ib_k)/2, \; k > 0$ and $c_k = (a_{-k} + ib_{-k})/2, \; k < 0$. We then find
 
 $$
 c_{-128} = \frac{1}{2}, \; c_{128} = \frac{1}{2}, \; c_{-32} = \frac{i}{2}, \; c_{32} = -\frac{i}{2}.
 $$
 
+Further we know that the ´fftshift´ function only shifts the array. Since ´fft´ gives an array with coefficients $(c_0, c_1, \dots c_{\lfloor N/2 \rfloor}, c_{-\lfloor N/2 \rfloor}, \dots , c_{-1})$ and by using ´fftshift´ you will shift the array to take the form $(c_{-\lfloor N/2 \rfloor}, \dots , c_{-1}, c_0, c_1, \dots c_{\lfloor N/2 \rfloor})$.
 
 
 
 ## Task 2: Signal Processing
-
-
 ### a)
 
 We define a cyclic convolution of $\bm{a}, \bm{b} \in \mathbb{R}^N$ entrywise for all $j = 0, \dots , N-1$ by
@@ -301,38 +311,85 @@ $$
 \begin{split}
 c_k (f*g) &= \int_0^1 (f*g)(x) e^{-2\pi ikx}dx \\
 &= \int_0^1 \left( \int_0^1 f(y) g(x-y)dy \right) e^{-2\pi ikx}dx \\
-&= \int_0^1 \left( \int_0^1 g(x-y)e^{-2\pi ikx} dx \right) f(y) dy .
+&= \int_0^1 \left( \int_0^1 g(x-y)e^{-2\pi ik(x-y)} dx \right) f(y) e^{-2\pi iky} dy \\
+&= \int_0^1 \left( \int_0^1 g(t)e^{-2\pi ik(t)} dt \right) f(y) e^{-2\pi iky} dy \\
+&= c_k(f) c_k(g).
 \end{split}
 $$
 
-Since $g$ is periodic we can write $g(x-y) = g(x) e^{-2\pi iky}$, and we find that
-
-$$
-c_k(f*g) = c_k(g) c_k(f).
-$$
-
-Further for any signal we want to show that
+Since $g$ is cyclic with a period of 1 we can do this substitution without thinking. Further for any signal we want to show that
 
 $$
 \widehat{( \bm{a} * \bm{b} )} = \hat{\bm{a}} \circ \hat{\bm{b}}.
 $$
 
 We consider the $j$-th element
+    
+$$
+\begin{split}
+\widehat{(\bm{a} * \bm{b})}_j &= \sum_{r=0}^{N-1} \sum_{k=0}^{N-1} w^{rj} a_k b_{j-k \mod N} \\
+&= \sum_{k=0}^{N-1} a_k w^{jk} \sum_{r=0}^{N-1} b_{j-k \mod N} w^{(j-r \mod N) k} \\
+&= \hat{a}_k \hat{b}_k 
+\end{split}
+$$
+
+Thus we have our desired result. Using this and the diagonlisation of the circulant matrix we have
 
 $$
-\widehat{(\bm{a} * \bm{b})}_j = \frac{1}{N}  \sum_{k=0}^{N-1} w^{jk} a_k b_{j-k \mod N}
+\begin{split}
+(\text{circ } \bm{a}) (\text{circ } \bm{b}) &= \frac{1}{N^2} \overline{\mathcal{F}}_N \text{diag }\hat{\bm{a}} \mathcal{F}_N \overline{\mathcal{F}}_N \text{diag }\hat{\bm{b}} \mathcal{F}_N \\
+&= \frac{1}{N^2} \overline{\mathcal{F}}_N \text{diag }\hat{\bm{a}} \text{diag }\hat{\bm{b}} \mathcal{F}_N \\
+&= \frac{1}{N^2} \overline{\mathcal{F}}_N \text{diag }\left\lbrace \hat{\bm{a}} \circ \hat{\bm{b}} \right\rbrace \mathcal{F}_N. \\
+&= \frac{1}{N^2} \overline{\mathcal{F}}_N \text{diag }\left\lbrace \widehat{\bm{a} * \bm{b}} \right\rbrace \mathcal{F}_N. \\
+&= \text{circ } (\bm{a}*\bm{b})
+\end{split}
 $$
 
-thus we have
+
+### c)
+
+Consider the Dirichlet kernel
+
+$$
+D_n (x) = 1 + 2 \sum_{k=1}^n \cos (2\pi kx) = 1 + \sum_{k=1}^n \left( e^{2\pi ikx} + e^{-2\pi ikx} \right) , n\in\mathbb{N}.
+$$
+
+We know want to find the Fourier coefficients
+
+$$
+\begin{split}
+c_k (D_n) &= \int_0^1 D_n (x) e^{-2\pi ikx} dx \\
+&= \int_0^1 \left[ e^{2\pi ikx} + \sum_{j=1}^{n} \left( e^{2\pi i(j-k)x} + e^{-2\pi i(k+j)x} \right)  \right]dx \\
+&= \int_0^1 e^{-2\pi ikx} dx + \sum_{j=1}^n \int_0^1 e^{2\pi i(j-k)x}dx + \sum_{j=1}^n \int_0^1 e^{-2\pi i(j+k)x} dx. \\
+\end{split}
+$$
+
+We have earlier shown that the integral is 0 for all non-zero exponents and 1 otherwise. We therefore have $c_k (D_n) = 1, \forall |k| \leq n$, else $c_k (D_n) = 0$. Let us discretise the Dirichlet-kernel and we find that by equidistant samples $d_j = D_n(j/N)$ we have that
+
+$$
+\hat{d}_j = \sum_{k=0}^{N-1} d_k w^{jk}.
+$$
+
+We can find every $d_k$ by
+
+$$
+d_k = \sum_{j=-n}^n e^{-2\pi ijk/N} = \sum_{j=0}^n e^{-2\pi ikj/N} + \sum_{j=0}^n e^{2\pi ikj/N} - 1 = \left\lbrace
+\begin{array}{cl}
+    2N-1 & , k \equiv 0 \mod N, \\
+    0 & , \text{else}.
+\end{array}
+\right.
+$$
+
+We can clearly see that this is a simpler and easily implementable form.
+    
+## Task 3: Image Processing
+### a)
+We now define the multivariate Fourier transform as
+
+$$
+\hat{F}_{k_1, k_2} = \sum_{j_1 = 0}^{N_1-1} \sum_{j_2 = 0}^{N_2-1} F_{j_1, j_2} \exp\left\lbrace -2\pi i \left( \frac{j_1 k_1}{N_1} + \frac{j_2 k_2}{N_2} \right) \right\rbrace, \;\; k_1 = 0, \dots N_1-1, k_2 = 0, \dots N_2-1
+$$
 
 
 
-
-b
-
-b
-b
-b
-bb
-b
-bb
