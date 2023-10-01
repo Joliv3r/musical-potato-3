@@ -367,29 +367,30 @@ $$
 We have earlier shown that the integral is 0 for all non-zero exponents and 1 otherwise. We therefore have $c_k (D_n) = 1, \forall |k| \leq n$, else $c_k (D_n) = 0$. Let us discretise the Dirichlet-kernel and we find that by equidistant samples $d_j = D_n(j/N)$ we have that
 
 $$
-\hat{d}_j = \sum_{k=0}^{N-1} d_k w^{jk}.
+\hat{d}_j = \sum_{k=0}^{N-1} d_k w^{jk} = \sum_{k=0}^{N-1} \sum_{l=-n}^{n} w^{k(j+l)}.
 $$
 
-We can find every $d_k$ by
+We can implement this and multiply the frequencies with this kernel to find the Fourier series, instead of generating it using FFT. By this method we once can generate the kernel and we now can find the series for all functions in the same interval.
 
-$$
-d_k = \sum_{j=-n}^n e^{-2\pi ijk/N} = \sum_{j=0}^n e^{-2\pi ikj/N} + \sum_{j=0}^n e^{2\pi ikj/N} - 1 = \left\lbrace
-\begin{array}{cl}
-    2N-1 & , k \equiv 0 \mod N, \\
-    0 & , \text{else}.
-\end{array}
-\right.
-$$
 
-We can clearly see that this is a simpler and easily implementable form.
+### g)
+Since convolution is just elementwise multiplication in the frequencies, we can have the filter be zero in all non relevant slots, and 1 in all relevant ones.
     
 ## Task 3: Image Processing
 ### a)
 We now define the multivariate Fourier transform as
 
 $$
-\hat{F}_{k_1, k_2} = \sum_{j_1 = 0}^{N_1-1} \sum_{j_2 = 0}^{N_2-1} F_{j_1, j_2} \exp\left\lbrace -2\pi i \left( \frac{j_1 k_1}{N_1} + \frac{j_2 k_2}{N_2} \right) \right\rbrace, \;\; k_1 = 0, \dots N_1-1, k_2 = 0, \dots N_2-1
+\hat{F}_{k_1, k_2} = \sum_{j_1 = 0}^{N_1-1} \sum_{j_2 = 0}^{N_2-1} F_{j_1, j_2} \exp\left\lbrace -2\pi i \left( \frac{j_1 k_1}{N_1} + \frac{j_2 k_2}{N_2} \right) \right\rbrace, \;\; k_1 = 0, \dots N_1-1, k_2 = 0, \dots N_2-1.
+$$
+
+We can further see that for $\bm{k} = (k_1, k_2)$ 
+
+$$
+\hat{F}_{\bm{k}} = \sum_{j_1=0}^{N_1-1}\sum_{j_2=0}^{N_2-1} F_{j_1,j_2} e^{-2\pi ij_1 k_1 / N_1} e^{-2\pi ij_2 k_2 / N_2}
 $$
 
 
+
+### b)
 
