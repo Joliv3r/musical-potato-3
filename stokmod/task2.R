@@ -30,7 +30,35 @@ sigmaB = sigma*(1+phi*HB) * exp(-phi*HB)
 sigmaAB = sigma*(1+phi*HAB) * exp(-phi*HAB)
 
 
-# Finding conditional mean
+# Finding conditional mean and variance
 muC = rep(mu, N) + sigmaAB %*% solve(sigmaB) %*% (val - rep(mu, length(val)))
+sigmaC = abs(diag(sigmaA - sigmaAB %*% solve(sigmaB) %*% t(sigmaAB)))
 
-plot(t, muC)
+# Defining the fifth percentile and prediction term
+z = qnorm(0.95)
+pred = z*sqrt( sigmaC )
+
+
+# Plotting the predictions
+plot_2a <- function(){
+    plot(tB, val, xlim=c(0.25, 0.5), ylim=c(0.20, 0.70), xlab=expression(theta), ylab=expression(Y(theta)), col=1, pch=19)
+    lines(t, muC, col = 2)
+    lines(t, muC + pred, lty=2, col=3)
+    lines(t, muC - pred, lty=2, col=3)
+    legend(
+        'bottomright',
+        legend=c('Conditional mean', 'Given data points', '90% conditional prediction interval'),
+        lty=c(1, NA, 2),
+        col=c(2, 1, 3),
+        pch=c(NA, 19, NA)
+    )
+}
+
+
+# Finding probability below threshhold.
+plot_2b <- function(){
+    a = 0.30
+    prob = pnorm((a - muC)/(sqrt(sigmaC)))
+
+    plot(t, prob, lty=1, xlab='t', ylab='Probability', pch=19)
+}
